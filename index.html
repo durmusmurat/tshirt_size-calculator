@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,23 +14,17 @@
 ===================================================== */
 
 :root {
-
     --red: #e60000;
     --red-dark: #bd0000;
     --red-soft: #fff1f1;
-
     --dark: #242424;
     --text: #333333;
     --muted: #707070;
-
     --line: #e6e6e6;
     --bg: #f4f5f6;
     --white: #ffffff;
-
     --green: #2e7d32;
     --orange: #ed6c02;
-    --purple: #7b1fa2;
-
 }
 
 
@@ -48,17 +43,10 @@ body {
 }
 
 body {
-
     padding: 14px;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--bg);
     color: var(--text);
-
 }
 
 
@@ -67,14 +55,8 @@ body {
 ===================================================== */
 
 .app {
-
-    width: min(
-        1450px,
-        calc(100vw - 28px)
-    );
-
+    width: min(1450px, calc(100vw - 28px));
     margin: auto;
-
 }
 
 
@@ -83,11 +65,8 @@ body {
 ===================================================== */
 
 .header {
-
     padding: 15px 22px;
-
-    border-radius:
-        18px 18px 0 0;
+    border-radius: 18px 18px 0 0;
 
     background:
         linear-gradient(
@@ -99,81 +78,72 @@ body {
     color: white;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     gap: 20px;
-
 }
 
 
 .brand-area {
-
     display: flex;
-
     align-items: center;
-
     gap: 14px;
-
 }
 
+
+/* =====================================================
+   VODAFONE LOGO
+===================================================== */
 
 .brand-mark {
+    width: 48px;
+    height: 48px;
 
-    width: 40px;
-    height: 40px;
-
-    border:
-        3px solid white;
-
-    border-radius: 50%;
-
-    display: grid;
-
-    place-items: center;
-
-    font-size: 28px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     flex-shrink: 0;
-
 }
 
 
+.brand-mark img {
+    width: 48px;
+    height: 48px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =====================================================
+   HEADER TEXT
+===================================================== */
+
 .header h1 {
-
     margin: 0;
-
     font-size: 25px;
-
 }
 
 
 .header p {
-
-    margin:
-        4px 0 0;
+    margin: 4px 0 0;
 
     color: #ffe4e4;
 
     font-size: 13px;
-
 }
 
 
 .header-progress {
-
     text-align: right;
-
     white-space: nowrap;
-
 }
 
 
 .header-progress small {
-
     display: block;
 
     margin-bottom: 3px;
@@ -185,14 +155,11 @@ body {
     letter-spacing: 1px;
 
     text-transform: uppercase;
-
 }
 
 
 .header-progress strong {
-
     font-size: 21px;
-
 }
 
 
@@ -201,18 +168,15 @@ body {
 ===================================================== */
 
 .card {
-
     overflow: hidden;
 
     background: white;
 
-    border-radius:
-        0 0 18px 18px;
+    border-radius: 0 0 18px 18px;
 
     box-shadow:
         0 10px 30px
-        rgba(0,0,0,.08);
-
+        rgba(0, 0, 0, .08);
 }
 
 
@@ -221,7 +185,6 @@ body {
 ===================================================== */
 
 .matrix-header {
-
     display: grid;
 
     grid-template-columns:
@@ -232,14 +195,11 @@ body {
 
     border-bottom:
         1px solid var(--line);
-
 }
 
 
 .matrix-header div {
-
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
     text-align: center;
 
@@ -248,23 +208,18 @@ body {
     font-weight: 700;
 
     color: #777;
-
 }
 
 
 .matrix-header div:first-child {
-
     text-align: left;
-
 }
 
 
 .matrix-header .score-header {
-
     color: var(--red);
 
     font-size: 17px;
-
 }
 
 
@@ -273,7 +228,6 @@ body {
 ===================================================== */
 
 .question {
-
     display: grid;
 
     grid-template-columns:
@@ -282,44 +236,36 @@ body {
 
     border-bottom:
         1px solid var(--line);
-
 }
 
 
 .question-title {
-
-    padding:
-        7px 11px;
+    padding: 7px 11px;
 
     background: #fcfcfc;
 
     display: flex;
-
     align-items: center;
 
     gap: 8px;
-
 }
 
 
 .question-index {
-
     font-size: 10px;
+
     font-weight: 800;
 
     color: var(--red);
-
 }
 
 
 .question-label {
-
     font-size: 14px;
 
     font-weight: 700;
 
     line-height: 1.2;
-
 }
 
 
@@ -328,13 +274,11 @@ body {
 ===================================================== */
 
 .option {
-
     position: relative;
 
     min-height: 57px;
 
-    padding:
-        7px 10px;
+    padding: 7px 10px;
 
     border: 0;
 
@@ -362,19 +306,15 @@ body {
         color .15s ease,
         transform .15s ease,
         box-shadow .15s ease;
-
 }
 
 
 .option:hover {
-
     background: var(--red-soft);
-
 }
 
 
 .option.selected {
-
     z-index: 2;
 
     background: var(--red);
@@ -385,13 +325,11 @@ body {
 
     box-shadow:
         inset 0 0 0 1px
-        rgba(255,255,255,.2);
-
+        rgba(255, 255, 255, .2);
 }
 
 
 .option.selected::before {
-
     content: "✓";
 
     width: 22px;
@@ -414,7 +352,6 @@ body {
     font-size: 12px;
 
     font-weight: 900;
-
 }
 
 
@@ -423,9 +360,7 @@ body {
 ===================================================== */
 
 .cockpit {
-
-    padding:
-        11px 18px;
+    padding: 11px 18px;
 
     display: grid;
 
@@ -445,7 +380,6 @@ body {
 
     border-top:
         1px solid var(--line);
-
 }
 
 
@@ -454,7 +388,6 @@ body {
 ===================================================== */
 
 .metric small {
-
     display: block;
 
     margin-bottom: 3px;
@@ -466,14 +399,11 @@ body {
     letter-spacing: .8px;
 
     text-transform: uppercase;
-
 }
 
 
 .metric strong {
-
     font-size: 23px;
-
 }
 
 
@@ -482,11 +412,9 @@ body {
 ===================================================== */
 
 .size-box {
-
     min-width: 130px;
 
-    padding:
-        10px 16px;
+    padding: 10px 16px;
 
     border-radius: 11px;
 
@@ -503,47 +431,32 @@ body {
     transition:
         background .25s ease,
         transform .25s ease;
-
 }
 
 
 .size-box.small {
-
-    background:
-        var(--green);
-
+    background: var(--green);
 }
 
 
 .size-box.medium {
-
-    background:
-        #1976d2;
-
+    background: #1976d2;
 }
 
 
 .size-box.large {
-
-    background:
-        var(--orange);
-
+    background: var(--orange);
 }
 
 
 .size-box.xlarge {
-
-    background:
-        var(--red);
-
+    background: var(--red);
 }
 
 
 .size-box.changed {
-
     animation:
         resultPop .25s ease;
-
 }
 
 
@@ -569,22 +482,18 @@ body {
 ===================================================== */
 
 .distribution {
-
     display: flex;
 
     justify-content: center;
 
     gap: 6px;
-
 }
 
 
 .dist-item {
-
     min-width: 44px;
 
-    padding:
-        5px 7px;
+    padding: 5px 7px;
 
     border:
         1px solid #ddd;
@@ -594,32 +503,25 @@ body {
     background: white;
 
     text-align: center;
-
 }
 
 
 .dist-item span {
-
     display: block;
 
     color: #888;
 
     font-size: 9px;
-
 }
 
 
 .dist-item strong {
-
     font-size: 14px;
-
 }
 
 
 .dist-zero {
-
     color: #aaa;
-
 }
 
 
@@ -628,18 +530,14 @@ body {
 ===================================================== */
 
 .actions {
-
     display: flex;
 
     gap: 7px;
-
 }
 
 
 .action {
-
-    padding:
-        9px 13px;
+    padding: 9px 13px;
 
     border: 0;
 
@@ -652,35 +550,33 @@ body {
     font-weight: 700;
 
     white-space: nowrap;
-
 }
 
 
 .reset {
-
     background: white;
 
     border:
         1px solid #ccc;
 
     color: #444;
+}
 
+
+.reset:hover {
+    background: #f2f2f2;
 }
 
 
 .copy {
-
     background: var(--dark);
 
     color: white;
-
 }
 
 
 .copy:hover {
-
     background: black;
-
 }
 
 
@@ -689,9 +585,7 @@ body {
 ===================================================== */
 
 .scale-area {
-
-    padding:
-        6px 16px;
+    padding: 6px 16px;
 
     display: flex;
 
@@ -707,14 +601,11 @@ body {
     font-size: 10px;
 
     color: #777;
-
 }
 
 
 .scale-area b {
-
     color: #333;
-
 }
 
 
@@ -723,11 +614,9 @@ body {
 ===================================================== */
 
 .summary-toggle {
-
     width: 100%;
 
-    padding:
-        9px 17px;
+    padding: 9px 17px;
 
     border: 0;
 
@@ -747,38 +636,30 @@ body {
     font-size: 12px;
 
     color: #444;
-
 }
 
 
 .summary-toggle strong {
-
     font-size: 12px;
-
 }
 
 
 .summary-toggle:hover {
-
     background: #f4f4f4;
-
 }
 
 
 .summary-arrow {
+    display: inline-block;
 
     transition:
         transform .2s ease;
-
 }
 
 
-.summary-open
-.summary-arrow {
-
+.summary-open .summary-arrow {
     transform:
         rotate(180deg);
-
 }
 
 
@@ -787,21 +668,17 @@ body {
 ===================================================== */
 
 .summary {
-
     display: none;
 
     border-top:
         1px solid var(--line);
 
     background: white;
-
 }
 
 
 .summary.visible {
-
     display: block;
-
 }
 
 
@@ -810,7 +687,6 @@ body {
 ===================================================== */
 
 .summary-row {
-
     display: grid;
 
     grid-template-columns:
@@ -822,43 +698,32 @@ body {
 
     border-bottom:
         1px solid #eeeeee;
-
 }
 
 
 .summary-row:last-child {
-
     border-bottom: none;
-
 }
 
 
 .summary-row > div {
-
-    padding:
-        7px 13px;
-
+    padding: 7px 13px;
 }
 
 
 .summary-name {
-
     font-size: 12px;
 
     font-weight: 700;
-
 }
 
 
 .summary-score {
-
     text-align: center;
-
 }
 
 
 .score-pill {
-
     display: inline-grid;
 
     width: 27px;
@@ -875,34 +740,27 @@ body {
     font-size: 12px;
 
     font-weight: 800;
-
 }
 
 
 .score-pill.zero {
-
     background: #ededed;
 
     color: #888;
-
 }
 
 
 .summary-answer {
-
     font-size: 12px;
 
     color: #555;
-
 }
 
 
 .summary-answer.empty {
-
     color: #aaa;
 
     font-style: italic;
-
 }
 
 
@@ -910,57 +768,42 @@ body {
    MOBILE
 ===================================================== */
 
-@media (
-    max-width: 900px
-) {
+@media (max-width: 900px) {
 
     body {
-
         padding: 0;
-
     }
 
 
     .app {
-
         width: 100%;
-
     }
 
 
     .header,
     .card {
-
         border-radius: 0;
-
     }
 
 
     .matrix-header {
-
         display: none;
-
     }
 
 
     .question {
-
         display: block;
 
         padding: 6px;
-
     }
 
 
     .question-title {
-
         padding: 8px;
-
     }
 
 
     .option {
-
         display: inline-flex;
 
         vertical-align: top;
@@ -976,52 +819,39 @@ body {
             1px solid #eee;
 
         border-radius: 7px;
-
     }
 
 
     .cockpit {
-
         grid-template-columns:
             1fr 1fr;
-
     }
 
 
     .distribution {
-
         justify-content: flex-start;
-
     }
 
 
     .actions {
-
         grid-column:
             1 / -1;
-
     }
 
 
     .action {
-
         flex: 1;
-
     }
 
 
     .scale-area {
-
         flex-wrap: wrap;
-
     }
 
 
     .summary-row {
-
         grid-template-columns:
             150px 50px 1fr;
-
     }
 
 }
@@ -1031,86 +861,64 @@ body {
    SMALL MOBILE
 ===================================================== */
 
-@media (
-    max-width: 520px
-) {
+@media (max-width: 520px) {
 
     .brand-mark {
-
         display: none;
-
     }
 
 
     .header {
-
         padding: 13px;
-
     }
 
 
     .header h1 {
-
         font-size: 20px;
-
     }
 
 
     .header p {
-
         font-size: 11px;
-
     }
 
 
     .header-progress small {
-
         display: none;
-
     }
 
 
     .option {
-
         width:
             calc(100% - 4px);
 
         min-height: 49px;
-
     }
 
 
     .cockpit {
-
         gap: 12px;
-
     }
 
 
     .distribution {
-
         grid-column:
             1 / -1;
-
     }
 
 
     .summary-row {
-
         grid-template-columns:
             1fr 45px;
-
     }
 
 
     .summary-answer {
-
         grid-column:
             1 / -1;
 
         padding-top:
             0 !important;
-
     }
 
 }
@@ -1121,7 +929,6 @@ body {
 
 
 <body>
-
 
 <div class="app">
 
@@ -1137,7 +944,12 @@ body {
 
 
         <div class="brand-mark">
-            ’
+
+            <img
+                src="vodafone-logo.png"
+                alt="Vodafone"
+            >
+
         </div>
 
 
@@ -1211,8 +1023,7 @@ body {
 
 <!-- QUESTIONS -->
 
-<div id="questions">
-</div>
+<div id="questions"></div>
 
 
 
@@ -1222,8 +1033,6 @@ body {
 
 <div class="cockpit">
 
-
-    <!-- TOTAL -->
 
     <div class="metric">
 
@@ -1239,8 +1048,6 @@ body {
 
 
 
-    <!-- AVERAGE -->
-
     <div class="metric">
 
         <small>
@@ -1255,8 +1062,6 @@ body {
 
 
 
-    <!-- SIZE -->
-
     <div
         id="sizeResult"
         class="size-box"
@@ -1266,12 +1071,11 @@ body {
 
 
 
-    <!-- DISTRIBUTION -->
-
     <div
         class="distribution"
         title="Seçilen puanların dağılımı"
     >
+
 
         <div class="dist-item">
 
@@ -1340,15 +1144,16 @@ body {
 
         </div>
 
+
     </div>
 
 
 
-    <!-- ACTIONS -->
-
     <div class="actions">
 
+
         <button
+            type="button"
             class="action reset"
             onclick="resetCalculator()"
         >
@@ -1357,12 +1162,14 @@ body {
 
 
         <button
+            type="button"
             id="copyButton"
             class="action copy"
             onclick="copyForJira()"
         >
             Jira'ya Kopyala
         </button>
+
 
     </div>
 
@@ -1406,6 +1213,7 @@ body {
 =================================================== -->
 
 <button
+    type="button"
     id="summaryToggle"
     class="summary-toggle"
     onclick="toggleSummary()"
@@ -1440,8 +1248,7 @@ body {
 <div
     id="summary"
     class="summary"
->
-</div>
+></div>
 
 
 </main>
@@ -1452,189 +1259,110 @@ body {
 
 <script>
 
-
 /* =====================================================
    DATA MODEL
 ===================================================== */
 
 const criteria = [
 
-
     {
-
-        name:
-            "Veri Karmaşıklığı",
+        name: "Veri Karmaşıklığı",
 
         options: [
-
             "Veri Hazır",
-
             "Küçük veri hazırlığı",
-
             "Birden fazla kaynak",
-
             "Veri keşfi / veri kalitesi problemi"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "İşin Kapsamı",
+        name: "İşin Kapsamı",
 
         options: [
-
             "Tek ve net bir ihtiyacı çözer",
-
             "Birden fazla alt aktivite içerir",
-
             "Bir iş akışının veya önemli bir yeteneğin geliştirilmesi",
-
             "Birden fazla iş alanını kapsar veya parçalanması düşünülmelidir"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Çözüm Karmaşıklığı",
+        name: "Çözüm Karmaşıklığı",
 
         options: [
-
             "Bilinen çözüm paterni",
-
             "Kısmen analiz ve tasarım gerektirir",
-
             "Birden fazla teknik karar içerir",
-
             "Yüksek teknik ve iş karmaşıklığı"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Bağımlılık Seviyesi",
+        name: "Bağımlılık Seviyesi",
 
         options: [
-
             "Bağımlılık yok veya çok sınırlı",
-
             "Tek ekip, sistem veya vendor bağımlılığı",
-
             "Birden fazla ekip/sistem veya kritik vendor bağımlılığı",
-
             "Çok sayıda ekip, sistem ve/veya kritik vendor bağımlılığı vardır"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Risk & Belirsizlik",
+        name: "Risk & Belirsizlik",
 
         options: [
-
             "Çözüm ve ihtiyaç net",
-
             "Bazı bilinmezler bulunur",
-
             "Risk veya belirsizlik yüksektir",
-
             "Belirsizlik ve risk kritik seviyededir"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Etki Alanı",
+        name: "Etki Alanı",
 
         options: [
-
             "Tek sistem / tek domain",
-
             "Birden fazla bileşeni etkiler",
-
             "Birden fazla ürün / domain etkilenir",
-
             "Tribe genelinde veya geniş ekosistemde etki yaratır"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Paydaş / Koordinasyon İhtiyacı",
+        name: "Paydaş / Koordinasyon İhtiyacı",
 
         options: [
-
             "Az sayıda paydaş",
-
             "Birkaç paydaş ile koordinasyon gerekir",
-
             "Düzenli koordinasyon gerekir",
-
             "Yoğun koordinasyon ve hizalanma gerekir"
-
         ]
-
     },
 
-
     {
-
-        name:
-            "Uzmanlık Çeşitliliği",
+        name: "Uzmanlık Çeşitliliği",
 
         options: [
-
             "Tek uzmanlık alanı",
-
             "2-3 uzmanlık alanı",
-
             "4 farklı uzmanlık alanı",
-
             "Dörtten fazla uzmanlık alanı ve paralel koordinasyon"
-
         ]
-
     }
-
 
 ];
 
 
-
 /* =====================================================
    ANSWERS
-
    Boş satır = 0
 ===================================================== */
 
 const answers =
-    new Array(
-        criteria.length
-    ).fill(0);
-
+    new Array(criteria.length).fill(0);
 
 
 /* =====================================================
@@ -1642,9 +1370,7 @@ const answers =
 ===================================================== */
 
 const questionsContainer =
-    document.getElementById(
-        "questions"
-    );
+    document.getElementById("questions");
 
 
 criteria.forEach(
@@ -1652,22 +1378,15 @@ criteria.forEach(
 
 
         const row =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         row.className =
             "question";
 
 
-
-        /* QUESTION TITLE */
-
         const title =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         title.className =
@@ -1678,12 +1397,7 @@ criteria.forEach(
 
             <span class="question-index">
 
-                ${String(
-                    rowIndex + 1
-                ).padStart(
-                    2,
-                    "0"
-                )}
+                ${String(rowIndex + 1).padStart(2, "0")}
 
             </span>
 
@@ -1696,19 +1410,11 @@ criteria.forEach(
         `;
 
 
-        row.appendChild(
-            title
-        );
+        row.appendChild(title);
 
-
-
-        /* OPTIONS */
 
         criterion.options.forEach(
-            (
-                optionText,
-                optionIndex
-            ) => {
+            (optionText, optionIndex) => {
 
 
                 const score =
@@ -1716,9 +1422,11 @@ criteria.forEach(
 
 
                 const button =
-                    document.createElement(
-                        "button"
-                    );
+                    document.createElement("button");
+
+
+                button.type =
+                    "button";
 
 
                 button.className =
@@ -1742,60 +1450,43 @@ criteria.forEach(
 
 
                         selectOption(
-
                             rowIndex,
-
                             score,
-
                             button
-
                         );
 
 
                     };
 
 
-                row.appendChild(
-                    button
-                );
-
+                row.appendChild(button);
 
             }
         );
 
 
-        questionsContainer.appendChild(
-            row
-        );
-
+        questionsContainer.appendChild(row);
 
     }
-
 );
 
 
-
 /* =====================================================
-   CREATE SUMMARY TABLE
+   CREATE SUMMARY
 ===================================================== */
 
 function buildSummary() {
 
 
     const summary =
-        document.getElementById(
-            "summary"
-        );
+        document.getElementById("summary");
 
 
     summary.innerHTML = "";
 
 
     criteria.forEach(
-        (
-            criterion,
-            index
-        ) => {
+        (criterion, index) => {
 
 
             const score =
@@ -1803,9 +1494,7 @@ function buildSummary() {
 
 
             const row =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             row.className =
@@ -1814,10 +1503,8 @@ function buildSummary() {
 
             const description =
                 score === 0
-                ? "Boş bırakıldı"
-                : criterion.options[
-                    score - 1
-                ];
+                    ? "Boş bırakıldı"
+                    : criterion.options[score - 1];
 
 
             row.innerHTML = `
@@ -1832,10 +1519,7 @@ function buildSummary() {
                 <div class="summary-score">
 
                     <span
-                        class="score-pill
-                        ${score === 0
-                            ? "zero"
-                            : ""}"
+                        class="score-pill ${score === 0 ? "zero" : ""}"
                     >
 
                         ${score}
@@ -1846,12 +1530,7 @@ function buildSummary() {
 
 
                 <div
-                    class="
-                        summary-answer
-                        ${score === 0
-                            ? "empty"
-                            : ""}
-                    "
+                    class="summary-answer ${score === 0 ? "empty" : ""}"
                 >
 
                     ${description}
@@ -1861,17 +1540,12 @@ function buildSummary() {
             `;
 
 
-            summary.appendChild(
-                row
-            );
-
+            summary.appendChild(row);
 
         }
     );
 
-
 }
-
 
 
 /* =====================================================
@@ -1885,23 +1559,12 @@ function selectOption(
 ) {
 
 
-    /*
-       Aynı seçeneğe tekrar
-       tıklanırsa kaldır.
-    */
+    /* Aynı seçeneğe tekrar basılırsa temizle */
 
     if (
-
         answers[rowIndex] === score
-
         &&
-
-        selectedButton
-            .classList
-            .contains(
-                "selected"
-            )
-
+        selectedButton.classList.contains("selected")
     ) {
 
 
@@ -1910,9 +1573,7 @@ function selectOption(
 
         selectedButton
             .classList
-            .remove(
-                "selected"
-            );
+            .remove("selected");
 
 
         calculate();
@@ -1923,10 +1584,7 @@ function selectOption(
     }
 
 
-
-    /*
-       Eski seçimi kaldır.
-    */
+    /* Aynı satırdaki eski seçimi kaldır */
 
     document
         .querySelectorAll(
@@ -1938,19 +1596,14 @@ function selectOption(
 
                 button
                     .classList
-                    .remove(
-                        "selected"
-                    );
+                    .remove("selected");
 
 
             }
         );
 
 
-
-    /*
-       Yeni seçim.
-    */
+    /* Yeni seçimi kaydet */
 
     answers[rowIndex] =
         score;
@@ -1958,25 +1611,19 @@ function selectOption(
 
     selectedButton
         .classList
-        .add(
-            "selected"
-        );
+        .add("selected");
 
 
     calculate();
 
-
 }
-
 
 
 /* =====================================================
    SIZE CALCULATION
 ===================================================== */
 
-function calculateSize(
-    average
-) {
+function calculateSize(average) {
 
 
     if (
@@ -2028,7 +1675,6 @@ function calculateSize(
 }
 
 
-
 /* =====================================================
    SIZE STYLE
 ===================================================== */
@@ -2040,70 +1686,52 @@ function updateSizeStyle(
 
 
     sizeElement.classList.remove(
-
         "small",
         "medium",
         "large",
         "xlarge",
         "changed"
-
     );
 
 
-    if (
-        size === "Small"
-    ) {
+    if (size === "Small") {
 
         sizeElement
             .classList
-            .add(
-                "small"
-            );
+            .add("small");
 
     }
 
 
-    else if (
-        size === "Medium"
-    ) {
+    else if (size === "Medium") {
 
         sizeElement
             .classList
-            .add(
-                "medium"
-            );
+            .add("medium");
 
     }
 
 
-    else if (
-        size === "Large"
-    ) {
+    else if (size === "Large") {
 
         sizeElement
             .classList
-            .add(
-                "large"
-            );
+            .add("large");
 
     }
 
 
-    else if (
-        size === "X-Large"
-    ) {
+    else if (size === "X-Large") {
 
         sizeElement
             .classList
-            .add(
-                "xlarge"
-            );
+            .add("xlarge");
 
     }
 
 
     /*
-       Small animation
+       Animasyonu yeniden başlat.
     */
 
     void sizeElement.offsetWidth;
@@ -2111,13 +1739,9 @@ function updateSizeStyle(
 
     sizeElement
         .classList
-        .add(
-            "changed"
-        );
-
+        .add("changed");
 
 }
-
 
 
 /* =====================================================
@@ -2127,81 +1751,76 @@ function updateSizeStyle(
 function calculate() {
 
 
-    /* TOTAL */
+    /*
+       Toplam puan.
+    */
 
     const total =
         answers.reduce(
-
-            (
-                total,
-                current
-            ) =>
-
-                total + current,
-
+            (sum, current) =>
+                sum + current,
             0
-
         );
-
 
 
     /*
-       Her zaman 8'e böl.
+       Boş kriterler 0 kabul edilir.
 
-       Boşlar 0.
+       Bu nedenle her zaman
+       kriter sayısına, yani 8'e bölünür.
     */
 
     const average =
-        total
-        /
-        criteria.length;
+        total / criteria.length;
 
 
+    /*
+       Kaç kriter seçilmiş?
+    */
 
     const selectedCount =
         answers.filter(
-
             score =>
                 score !== 0
-
         ).length;
 
 
+    /*
+       Size hesapla.
+    */
 
     const size =
-        calculateSize(
-            average
-        );
+        calculateSize(average);
 
 
+    /*
+       Ekrandaki değerleri güncelle.
+    */
 
-    /* UPDATE METRICS */
-
-    document.getElementById(
-        "totalScore"
-    ).textContent =
+    document
+        .getElementById("totalScore")
+        .textContent =
         total;
 
 
-    document.getElementById(
-        "averageScore"
-    ).textContent =
+    document
+        .getElementById("averageScore")
+        .textContent =
         average.toFixed(2);
 
 
-    document.getElementById(
-        "selectedCount"
-    ).textContent =
-        `${selectedCount} / 8`;
+    document
+        .getElementById("selectedCount")
+        .textContent =
+        `${selectedCount} / ${criteria.length}`;
 
 
-
-    /* SIZE */
+    /*
+       Size sonucu.
+    */
 
     const sizeElement =
-        document.getElementById(
-            "sizeResult"
-        );
+        document.getElementById("sizeResult");
 
 
     sizeElement.textContent =
@@ -2214,12 +1833,13 @@ function calculate() {
     );
 
 
+    /*
+       Summary mesajı.
+    */
 
-    /* SUMMARY MESSAGE */
-
-    document.getElementById(
-        "summaryMessage"
-    ).textContent =
+    document
+        .getElementById("summaryMessage")
+        .textContent =
 
         selectedCount === 0
 
@@ -2228,15 +1848,15 @@ function calculate() {
             : `${selectedCount} kriter seçildi`;
 
 
+    /*
+       Diğer alanları güncelle.
+    */
 
     updateDistribution();
 
-
     buildSummary();
 
-
 }
-
 
 
 /* =====================================================
@@ -2255,24 +1875,21 @@ function updateDistribution() {
 
         const count =
             answers.filter(
-
                 value =>
                     value === score
-
             ).length;
 
 
-        document.getElementById(
-            "dist" + score
-        ).textContent =
+        document
+            .getElementById(
+                "dist" + score
+            )
+            .textContent =
             count;
-
 
     }
 
-
 }
-
 
 
 /* =====================================================
@@ -2283,33 +1900,23 @@ function toggleSummary() {
 
 
     const summary =
-        document.getElementById(
-            "summary"
-        );
+        document.getElementById("summary");
 
 
     const button =
-        document.getElementById(
-            "summaryToggle"
-        );
+        document.getElementById("summaryToggle");
 
 
     summary
         .classList
-        .toggle(
-            "visible"
-        );
+        .toggle("visible");
 
 
     button
         .classList
-        .toggle(
-            "summary-open"
-        );
-
+        .toggle("summary-open");
 
 }
-
 
 
 /* =====================================================
@@ -2319,24 +1926,26 @@ function toggleSummary() {
 function resetCalculator() {
 
 
-    answers.fill(
-        0
-    );
+    /*
+       Tüm değerleri sıfırla.
+    */
 
+    answers.fill(0);
+
+
+    /*
+       Tüm seçili hücreleri temizle.
+    */
 
     document
-        .querySelectorAll(
-            ".option"
-        )
+        .querySelectorAll(".option")
         .forEach(
             button => {
 
 
                 button
                     .classList
-                    .remove(
-                        "selected"
-                    );
+                    .remove("selected");
 
 
             }
@@ -2345,9 +1954,7 @@ function resetCalculator() {
 
     calculate();
 
-
 }
-
 
 
 /* =====================================================
@@ -2359,33 +1966,21 @@ async function copyForJira() {
 
     const total =
         answers.reduce(
-
-            (
-                sum,
-                value
-            ) =>
-
+            (sum, value) =>
                 sum + value,
-
             0
-
         );
 
 
     const average =
-        total
-        /
-        criteria.length;
+        total / criteria.length;
 
 
     const size =
-        calculateSize(
-            average
-        );
+        calculateSize(average);
 
 
     let text =
-
 `T-Shirt Size: ${size}
 Average Score: ${average.toFixed(2)}
 Total Score: ${total}
@@ -2395,21 +1990,15 @@ Estimation Breakdown
 `;
 
 
-
     criteria.forEach(
-        (
-            criterion,
-            index
-        ) => {
+        (criterion, index) => {
 
 
             const score =
                 answers[index];
 
 
-            if (
-                score === 0
-            ) {
+            if (score === 0) {
 
 
                 text +=
@@ -2430,10 +2019,8 @@ Estimation Breakdown
 
             }
 
-
         }
     );
-
 
 
     try {
@@ -2441,18 +2028,14 @@ Estimation Breakdown
 
         await navigator
             .clipboard
-            .writeText(
-                text
-            );
+            .writeText(text);
 
 
         const button =
-            document.getElementById(
-                "copyButton"
-            );
+            document.getElementById("copyButton");
 
 
-        const old =
+        const oldText =
             button.textContent;
 
 
@@ -2465,11 +2048,10 @@ Estimation Breakdown
 
 
                 button.textContent =
-                    old;
+                    oldText;
 
 
             },
-
             1400
         );
 
@@ -2477,7 +2059,7 @@ Estimation Breakdown
     }
 
 
-    catch {
+    catch (error) {
 
 
         alert(
@@ -2487,9 +2069,7 @@ Estimation Breakdown
 
     }
 
-
 }
-
 
 
 /* =====================================================
@@ -2498,9 +2078,7 @@ Estimation Breakdown
 
 calculate();
 
-
 </script>
-
 
 </body>
 </html>
