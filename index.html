@@ -1,410 +1,902 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>T-Shirt Size Calculator</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    T-Shirt Size Calculator
+</title>
+
 
 <style>
+
+/* =====================================================
+   COLORS
+===================================================== */
+
 :root {
+
     --vodafone-red: #e60000;
     --vodafone-dark-red: #bd0000;
+
     --dark: #242424;
     --text: #333333;
     --muted: #6b6b6b;
+
     --line: #e5e5e5;
     --bg: #f5f5f5;
     --white: #ffffff;
+
 }
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
 
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
+
     margin: 0;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: var(--text);
+
     background: var(--bg);
+
 }
 
 body {
+
     padding: 14px;
+
 }
 
-/* MAIN CONTAINER */
+
+/* =====================================================
+   MAIN APP
+===================================================== */
 
 .app {
-    width: min(1450px, calc(100vw - 28px));
+
+    width: min(
+        1450px,
+        calc(100vw - 28px)
+    );
+
     margin: 0 auto;
+
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header {
-    background: linear-gradient(
-        120deg,
-        var(--vodafone-red),
-        var(--vodafone-dark-red)
-    );
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--vodafone-red),
+            var(--vodafone-dark-red)
+        );
+
     color: white;
-    border-radius: 18px 18px 0 0;
+
+    border-radius:
+        18px 18px 0 0;
+
     padding: 15px 22px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 20px;
+
 }
+
 
 .header-left {
+
     display: flex;
+
     align-items: center;
+
     gap: 15px;
+
 }
+
 
 .logo {
-    width: 38px;
-    height: 38px;
-    border: 3px solid white;
+
+    width: 40px;
+
+    height: 40px;
+
+    border:
+        3px solid white;
+
     border-radius: 50%;
+
     display: grid;
+
     place-items: center;
-    font-size: 28px;
+
+    font-size: 29px;
+
     font-weight: bold;
+
     line-height: 1;
+
+    flex-shrink: 0;
+
 }
+
 
 .header h1 {
+
     margin: 0;
-    font-size: 23px;
+
+    font-size: 26px;
+
+    line-height: 1.1;
+
 }
+
 
 .header p {
-    margin: 4px 0 0;
-    font-size: 12px;
+
+    margin:
+        5px 0 0;
+
+    font-size: 14px;
+
+    line-height: 1.25;
+
     color: #ffe4e4;
+
 }
+
 
 .score-header {
+
     text-align: right;
+
+    white-space: nowrap;
+
 }
+
 
 .score-header small {
+
     display: block;
-    opacity: .8;
-    font-size: 10px;
+
+    opacity: .85;
+
+    font-size: 11px;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
+
+    margin-bottom: 3px;
+
 }
+
 
 .score-header strong {
-    font-size: 20px;
+
+    font-size: 22px;
+
 }
 
-/* CONTENT */
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
 
 .card {
+
     background: white;
-    border-radius: 0 0 18px 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    border-radius:
+        0 0 18px 18px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, .08);
+
     overflow: hidden;
+
 }
 
-/* TABLE HEADER */
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
 
 .table-header {
+
     display: grid;
-    grid-template-columns: 185px repeat(4, 1fr);
-    background: #fafafa;
-    border-bottom: 1px solid var(--line);
+
+    grid-template-columns:
+        205px
+        repeat(4, 1fr);
+
+    background:
+        #fafafa;
+
+    border-bottom:
+        1px solid var(--line);
+
 }
+
 
 .table-header > div {
-    padding: 8px 10px;
+
+    padding:
+        8px 10px;
+
     text-align: center;
-    font-size: 11px;
+
+    font-size: 13px;
+
     font-weight: 700;
+
     color: #777;
+
 }
+
 
 .table-header > div:first-child {
+
     text-align: left;
+
 }
+
 
 .table-header .number {
-    color: var(--vodafone-red);
-    font-size: 15px;
+
+    color:
+        var(--vodafone-red);
+
+    font-size: 17px;
+
 }
 
-/* QUESTION ROW */
+
+/* =====================================================
+   QUESTION ROW
+===================================================== */
 
 .question {
+
     display: grid;
-    grid-template-columns: 185px repeat(4, 1fr);
-    border-bottom: 1px solid var(--line);
+
+    grid-template-columns:
+        205px
+        repeat(4, 1fr);
+
+    border-bottom:
+        1px solid var(--line);
+
     align-items: stretch;
+
 }
+
 
 .question:last-child {
+
     border-bottom: none;
+
 }
+
+
+/* =====================================================
+   QUESTION TITLE
+===================================================== */
 
 .question-title {
-    padding: 7px 10px;
+
+    padding:
+        7px 11px;
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
-    background: #fcfcfc;
+
+    background:
+        #fcfcfc;
+
 }
+
 
 .question-number {
-    color: var(--vodafone-red);
-    font-size: 10px;
+
+    color:
+        var(--vodafone-red);
+
+    font-size: 11px;
+
     font-weight: 800;
+
+    flex-shrink: 0;
+
 }
+
 
 .question-name {
-    font-size: 12px;
+
+    font-size: 14px;
+
     font-weight: 700;
-    line-height: 1.15;
+
+    line-height: 1.2;
+
 }
 
+
+/* =====================================================
+   OPTIONS
+===================================================== */
+
 .option {
+
     border: 0;
-    border-left: 1px solid #eeeeee;
+
+    border-left:
+        1px solid #eeeeee;
+
     background: white;
-    padding: 6px 9px;
-    min-height: 52px;
+
+    padding:
+        7px 10px;
+
+    min-height: 58px;
+
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
 
-    font-size: 11px;
+    font-size: 13px;
+
     line-height: 1.22;
+
     text-align: left;
+
     color: #444;
 
     transition:
         background .12s ease,
-        color .12s ease;
+        color .12s ease,
+        box-shadow .12s ease;
+
 }
+
 
 .option:hover {
-    background: #fff2f2;
+
+    background:
+        #fff2f2;
+
 }
+
 
 .option.selected {
-    background: var(--vodafone-red);
+
+    background:
+        var(--vodafone-red);
+
     color: white;
+
     font-weight: 600;
+
 }
 
+
 .option.selected::before {
+
     content: "✓";
-    min-width: 20px;
-    height: 20px;
-    margin-right: 6px;
+
+    min-width: 22px;
+
+    width: 22px;
+
+    height: 22px;
+
+    margin-right: 7px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 50%;
-    background: white;
-    color: var(--vodafone-red);
 
-    font-size: 11px;
+    background: white;
+
+    color:
+        var(--vodafone-red);
+
+    font-size: 12px;
+
     font-weight: 900;
+
+    flex-shrink: 0;
+
 }
 
-/* RESULT */
+
+/* =====================================================
+   RESULT AREA
+===================================================== */
 
 .result-area {
-    background: #f7f7f7;
-    border-top: 1px solid var(--line);
 
-    padding: 11px 16px;
+    background:
+        #f7f7f7;
+
+    border-top:
+        1px solid var(--line);
+
+    padding:
+        11px 18px;
 
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+
+    grid-template-columns:
+        auto
+        auto
+        1fr
+        auto;
+
     align-items: center;
-    gap: 20px;
+
+    gap: 24px;
+
 }
+
+
+/* =====================================================
+   METRICS
+===================================================== */
 
 .metric small {
+
     display: block;
-    color: #888;
-    font-size: 9px;
+
+    color: #777;
+
+    font-size: 11px;
+
     text-transform: uppercase;
-    letter-spacing: 1px;
+
+    letter-spacing: .8px;
+
     margin-bottom: 2px;
+
 }
+
 
 .metric strong {
-    font-size: 20px;
+
+    font-size: 23px;
+
 }
+
+
+/* =====================================================
+   SIZE RESULT
+===================================================== */
 
 .size-result {
-    min-width: 120px;
-    padding: 9px 17px;
+
+    min-width: 145px;
+
+    max-width: 200px;
+
+    padding:
+        10px 18px;
 
     text-align: center;
+
     border-radius: 10px;
 
-    background: var(--vodafone-red);
+    background:
+        var(--vodafone-red);
+
     color: white;
 
-    font-size: 18px;
+    font-size: 20px;
+
     font-weight: 800;
+
+    box-shadow:
+        0 3px 8px
+        rgba(230, 0, 0, .15);
+
 }
 
-.empty-info {
-    font-size: 11px;
-    color: #777;
-}
 
-.empty-info strong {
-    color: #333;
-}
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
 
 .actions {
+
     display: flex;
-    gap: 7px;
+
+    gap: 8px;
+
 }
 
-button.action {
-    border-radius: 8px;
-    border: 0;
-    padding: 9px 13px;
 
-    font-size: 11px;
+button.action {
+
+    border-radius: 8px;
+
+    border: 0;
+
+    padding:
+        10px 15px;
+
+    font-size: 13px;
+
     font-weight: 700;
 
     cursor: pointer;
+
+    white-space: nowrap;
+
 }
+
 
 .reset {
-    border: 1px solid #ccc !important;
+
+    border:
+        1px solid #ccc !important;
+
     background: white;
+
     color: #444;
+
 }
+
+
+.reset:hover {
+
+    background:
+        #f1f1f1;
+
+}
+
 
 .copy {
-    background: var(--dark);
+
+    background:
+        var(--dark);
+
     color: white;
+
 }
 
-/* SIZE SCALE */
+
+.copy:hover {
+
+    background:
+        #000000;
+
+}
+
+
+/* =====================================================
+   SIZE SCALE
+===================================================== */
 
 .scale {
-    padding: 6px 16px;
+
+    padding:
+        7px 16px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 18px;
 
     background: white;
-    border-top: 1px solid var(--line);
 
-    font-size: 9px;
+    border-top:
+        1px solid var(--line);
+
+    font-size: 11px;
+
     color: #777;
+
 }
+
 
 .scale b {
+
     color: #444;
+
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 900px) {
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+@media (
+    max-width: 900px
+) {
 
     body {
+
         padding: 0;
+
     }
+
 
     .app {
+
         width: 100%;
+
     }
+
 
     .header {
+
         border-radius: 0;
+
     }
+
 
     .card {
+
         border-radius: 0;
+
     }
+
 
     .table-header {
+
         display: none;
+
     }
+
 
     .question {
+
         display: block;
+
         padding: 6px;
+
     }
+
 
     .question-title {
+
         padding: 8px;
+
     }
+
 
     .option {
+
         display: inline-flex;
-        width: calc(50% - 4px);
-        min-height: 58px;
+
+        width:
+            calc(50% - 4px);
+
+        min-height: 62px;
+
         vertical-align: top;
-        border: 1px solid #eee;
+
+        border:
+            1px solid #eee;
+
         margin: 2px;
+
         border-radius: 7px;
+
+        font-size: 13px;
+
     }
+
 
     .result-area {
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
+
 
     .actions {
-        grid-column: 1 / -1;
+
+        grid-column:
+            1 / -1;
+
     }
+
 
     button.action {
+
         flex: 1;
+
     }
 
+
     .scale {
+
         flex-wrap: wrap;
+
     }
+
 }
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (
+    max-width: 520px
+) {
+
+    .header {
+
+        padding:
+            14px;
+
+    }
+
+
+    .header h1 {
+
+        font-size: 21px;
+
+    }
+
+
+    .header p {
+
+        font-size: 12px;
+
+    }
+
+
+    .logo {
+
+        display: none;
+
+    }
+
+
+    .score-header small {
+
+        display: none;
+
+    }
+
+
+    .score-header strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .option {
+
+        width:
+            calc(100% - 4px);
+
+        min-height: 48px;
+
+    }
+
+
+    .result-area {
+
+        gap: 12px;
+
+    }
+
+
+    .size-result {
+
+        font-size: 17px;
+
+        min-width: 110px;
+
+    }
+
+
+    .actions {
+
+        flex-direction: column;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
-    <!-- HEADER -->
+
+    <!-- ===============================================
+         HEADER
+    ================================================ -->
 
     <header class="header">
 
+
         <div class="header-left">
 
-            <div class="logo">’</div>
+
+            <div class="logo">
+                ’
+            </div>
+
 
             <div>
-                <h1>T-Shirt Size Calculator</h1>
+
+                <h1>
+                    T-Shirt Size Calculator
+                </h1>
+
 
                 <p>
-                    Her satırdan işi en iyi tanımlayan seçeneği seç.
-                    Boş bırakılan kriter 0 puan olarak hesaplanır.
+                    Her satırdan işi en iyi tanımlayan
+                    seçeneği seç. Boş bırakılan kriter
+                    0 puan olarak hesaplanır.
                 </p>
+
             </div>
+
 
         </div>
 
+
         <div class="score-header">
 
-            <small>Seçilen kriter</small>
+            <small>
+                Seçilen kriter
+            </small>
 
             <strong id="selectedCount">
                 0 / 8
@@ -412,41 +904,65 @@ button.action {
 
         </div>
 
+
     </header>
 
 
+
+    <!-- ===============================================
+         MAIN CARD
+    ================================================ -->
+
     <main class="card">
+
 
         <!-- TABLE HEADER -->
 
         <div class="table-header">
 
-            <div>Kriter</div>
+            <div>
+                Kriter
+            </div>
 
-            <div class="number">1</div>
+            <div class="number">
+                1
+            </div>
 
-            <div class="number">2</div>
+            <div class="number">
+                2
+            </div>
 
-            <div class="number">3</div>
+            <div class="number">
+                3
+            </div>
 
-            <div class="number">4</div>
+            <div class="number">
+                4
+            </div>
 
         </div>
 
 
-        <!-- QUESTIONS -->
+
+        <!-- QUESTIONS WILL BE GENERATED HERE -->
 
         <div id="questions">
         </div>
 
 
-        <!-- RESULT -->
+
+        <!-- ===========================================
+             RESULT
+        ============================================ -->
 
         <div class="result-area">
 
+
             <div class="metric">
 
-                <small>Toplam Puan</small>
+                <small>
+                    Toplam Puan
+                </small>
 
                 <strong id="totalScore">
                     0
@@ -455,15 +971,19 @@ button.action {
             </div>
 
 
+
             <div class="metric">
 
-                <small>Average</small>
+                <small>
+                    Average
+                </small>
 
                 <strong id="averageScore">
                     0.00
                 </strong>
 
             </div>
+
 
 
             <div>
@@ -478,7 +998,9 @@ button.action {
             </div>
 
 
+
             <div class="actions">
+
 
                 <button
                     class="action reset"
@@ -487,6 +1009,7 @@ button.action {
                     ↻ Sıfırla
                 </button>
 
+
                 <button
                     class="action copy"
                     onclick="copyForJira()"
@@ -494,16 +1017,23 @@ button.action {
                     Jira'ya Kopyala
                 </button>
 
+
             </div>
+
 
         </div>
 
 
-        <!-- SCALE -->
+
+        <!-- ===========================================
+             SIZE SCALE
+        ============================================ -->
 
         <div class="scale">
 
-            <b>Size:</b>
+            <b>
+                Size:
+            </b>
 
             <span>
                 1.00 – 1.75 Small
@@ -523,525 +1053,248 @@ button.action {
 
         </div>
 
+
     </main>
+
 
 </div>
 
 
+
 <script>
+
+
+/* =====================================================
+   CRITERIA
+===================================================== */
 
 const criteria = [
 
+
     {
-        name: "Veri Karmaşıklığı",
+
+        name:
+            "Veri Karmaşıklığı",
 
         options: [
+
             "Veri Hazır",
+
             "Küçük veri hazırlığı",
+
             "Birden fazla kaynak",
+
             "Veri keşfi / veri kalitesi problemi"
+
         ]
+
     },
 
+
     {
-        name: "İşin Kapsamı",
+
+        name:
+            "İşin Kapsamı",
 
         options: [
+
             "Tek ve net bir ihtiyacı çözer",
+
             "Birden fazla alt aktivite içerir",
+
             "Bir iş akışının veya önemli bir yeteneğin geliştirilmesi",
+
             "Birden fazla iş alanını kapsar veya parçalanması düşünülmelidir"
+
         ]
+
     },
 
+
     {
-        name: "Çözüm Karmaşıklığı",
+
+        name:
+            "Çözüm Karmaşıklığı",
 
         options: [
+
             "Bilinen çözüm paterni",
+
             "Kısmen analiz ve tasarım gerektirir",
+
             "Birden fazla teknik karar içerir",
+
             "Yüksek teknik ve iş karmaşıklığı"
+
         ]
+
     },
 
+
     {
-        name: "Bağımlılık Seviyesi",
+
+        name:
+            "Bağımlılık Seviyesi",
 
         options: [
+
             "Bağımlılık yok veya çok sınırlı",
+
             "Tek ekip, sistem veya vendor bağımlılığı",
+
             "Birden fazla ekip/sistem veya kritik vendor bağımlılığı",
+
             "Çok sayıda ekip, sistem ve/veya kritik vendor bağımlılığı vardır"
+
         ]
+
     },
 
+
     {
-        name: "Risk & Belirsizlik",
+
+        name:
+            "Risk & Belirsizlik",
 
         options: [
+
             "Çözüm ve ihtiyaç net",
+
             "Bazı bilinmezler bulunur",
+
             "Risk veya belirsizlik yüksektir",
+
             "Belirsizlik ve risk kritik seviyededir"
+
         ]
+
     },
 
+
     {
-        name: "Etki Alanı",
+
+        name:
+            "Etki Alanı",
 
         options: [
+
             "Tek sistem / tek domain",
+
             "Birden fazla bileşeni etkiler",
+
             "Birden fazla ürün / domain etkilenir",
+
             "Tribe genelinde veya geniş ekosistemde etki yaratır"
+
         ]
+
     },
 
+
     {
-        name: "Paydaş / Koordinasyon İhtiyacı",
+
+        name:
+            "Paydaş / Koordinasyon İhtiyacı",
 
         options: [
+
             "Az sayıda paydaş",
+
             "Birkaç paydaş ile koordinasyon gerekir",
+
             "Düzenli koordinasyon gerekir",
+
             "Yoğun koordinasyon ve hizalanma gerekir"
+
         ]
+
     },
 
+
     {
-        name: "Uzmanlık Çeşitliliği",
+
+        name:
+            "Uzmanlık Çeşitliliği",
 
         options: [
+
             "Tek uzmanlık alanı",
+
             "2-3 uzmanlık alanı",
+
             "4 farklı uzmanlık alanı",
+
             "Dörtten fazla uzmanlık alanı ve paralel koordinasyon"
+
         ]
+
     }
+
 
 ];
 
 
-/*
-    Hiçbir seçim yapılmamışsa ilgili kriter
-    otomatik olarak 0 puandır.
-*/
 
-const answers = new Array(criteria.length).fill(0);
+/* =====================================================
+   ANSWERS
+
+   Her kriter başlangıçta 0 puan.
+
+   Kullanıcı seçim yapmazsa
+   kriter 0 olarak kalır.
+===================================================== */
+
+const answers =
+    new Array(
+        criteria.length
+    ).fill(0);
 
 
-/* -----------------------
-   CREATE UI
------------------------ */
+
+/* =====================================================
+   CREATE QUESTION TABLE
+===================================================== */
 
 const questionsContainer =
-    document.getElementById("questions");
-
-
-criteria.forEach((criterion, rowIndex) => {
-
-    const row =
-        document.createElement("div");
-
-    row.className = "question";
-
-
-    /* Question name */
-
-    const title =
-        document.createElement("div");
-
-    title.className = "question-title";
-
-    title.innerHTML = `
-
-        <span class="question-number">
-            ${String(rowIndex + 1).padStart(2, "0")}
-        </span>
-
-        <span class="question-name">
-            ${criterion.name}
-        </span>
-
-    `;
-
-    row.appendChild(title);
-
-
-    /* Options */
-
-    criterion.options.forEach(
-        (optionText, optionIndex) => {
-
-            const score = optionIndex + 1;
-
-            const button =
-                document.createElement("button");
-
-            button.className = "option";
-
-            button.dataset.row = rowIndex;
-
-            button.dataset.score = score;
-
-            button.textContent = optionText;
-
-
-            button.addEventListener(
-                "click",
-
-                function () {
-
-                    selectOption(
-                        rowIndex,
-                        score,
-                        button
-                    );
-
-                }
-
-            );
-
-
-            row.appendChild(button);
-
-        }
+    document.getElementById(
+        "questions"
     );
 
 
-    questionsContainer.appendChild(row);
 
-});
+criteria.forEach(
+    (criterion, rowIndex) => {
 
 
-/* -----------------------
-   SELECT OPTION
------------------------ */
-
-function selectOption(
-    rowIndex,
-    score,
-    selectedButton
-) {
-
-    /*
-        Aynı seçeneğe ikinci kez basılırsa
-        seçim kaldırılır ve tekrar 0 olur.
-    */
-
-    if (
-        answers[rowIndex] === score &&
-        selectedButton.classList.contains("selected")
-    ) {
-
-        answers[rowIndex] = 0;
-
-        selectedButton.classList.remove("selected");
-
-        calculate();
-
-        return;
-    }
-
-
-    /*
-        O satırdaki eski seçimi kaldır
-    */
-
-    document
-        .querySelectorAll(
-            `[data-row="${rowIndex}"]`
-        )
-        .forEach(button => {
-
-            button.classList.remove(
-                "selected"
-            );
-
-        });
-
-
-    /*
-        Yeni seçimi kaydet
-    */
-
-    answers[rowIndex] = score;
-
-    selectedButton.classList.add(
-        "selected"
-    );
-
-
-    calculate();
-
-}
-
-
-/* -----------------------
-   CALCULATION
------------------------ */
-
-function calculate() {
-
-    /*
-        ÖNEMLİ:
-        Boş kriterler answers içinde 0'dır.
-
-        Her zaman 8'e bölüyoruz.
-
-        Örnek:
-
-        2 + 3 + 2 + 0 + 0 + 1 + 0 + 0
-        --------------------------------
-                       8
-
-        = 1.00
-    */
-
-
-    const total =
-        answers.reduce(
-            (sum, value) => sum + value,
-            0
-        );
-
-
-    const average =
-        total / criteria.length;
-
-
-    const selectedCount =
-        answers.filter(
-            value => value > 0
-        ).length;
-
-
-    /*
-        UI Update
-    */
-
-    document.getElementById(
-        "totalScore"
-    ).textContent = total;
-
-
-    document.getElementById(
-        "averageScore"
-    ).textContent =
-        average.toFixed(2);
-
-
-    document.getElementById(
-        "selectedCount"
-    ).textContent =
-        `${selectedCount} / 8`;
-
-
-    const sizeElement =
-        document.getElementById(
-            "sizeResult"
-        );
-
-
-    /*
-        Size hesaplama
-
-        Average 1'in altındaysa
-        mevcut business rule'da
-        tanımlı bir size bulunmuyor.
-    */
-
-    const size =
-        calculateSize(average);
-
-
-    sizeElement.textContent = size;
-
-}
-
-
-/* -----------------------
-   SIZE RULES
------------------------ */
-
-function calculateSize(average) {
-
-    if (average >= 1.00 && average <= 1.75) {
-
-        return "Small";
-
-    }
-
-    if (average > 1.75 && average <= 2.50) {
-
-        return "Medium";
-
-    }
-
-    if (average > 2.50 && average <= 3.25) {
-
-        return "Large";
-
-    }
-
-    if (average > 3.25 && average <= 4.00) {
-
-        return "X-Large";
-
-    }
-
-
-    /*
-        0 - 0.99 arası için
-        business tarafında size tanımı yok.
-    */
-
-    return "Henüz Size Yok";
-
-}
-
-
-/* -----------------------
-   RESET
------------------------ */
-
-function resetCalculator() {
-
-    answers.fill(0);
-
-
-    document
-        .querySelectorAll(".option")
-        .forEach(button => {
-
-            button.classList.remove(
-                "selected"
-            );
-
-        });
-
-
-    calculate();
-
-}
-
-
-/* -----------------------
-   COPY TO JIRA
------------------------ */
-
-async function copyForJira() {
-
-    const total =
-        answers.reduce(
-            (sum, value) => sum + value,
-            0
-        );
-
-
-    const average =
-        total / criteria.length;
-
-
-    const size =
-        calculateSize(average);
-
-
-    let text =
-
-`T-Shirt Size: ${size}
-Average Score: ${average.toFixed(2)}
-Total Score: ${total}
-
-`;
-
-
-    criteria.forEach(
-        (criterion, index) => {
-
-            const score =
-                answers[index];
-
-
-            if (score === 0) {
-
-                text +=
-`${criterion.name}: 0 - Boş bırakıldı
-`;
-
-            }
-
-            else {
-
-                const selectedText =
-                    criterion.options[
-                        score - 1
-                    ];
-
-
-                text +=
-`${criterion.name}: ${score} - ${selectedText}
-`;
-
-            }
-
-        }
-
-    );
-
-
-    try {
-
-        await navigator.clipboard.writeText(
-            text
-        );
-
-
-        const button =
-            document.querySelector(
-                ".copy"
+        const row =
+            document.createElement(
+                "div"
             );
 
 
-        const originalText =
-            button.textContent;
+        row.className =
+            "question";
 
 
-        button.textContent =
-            "✓ Kopyalandı";
+
+        /* -------------------------------------------
+           QUESTION TITLE
+        ------------------------------------------- */
+
+        const title =
+            document.createElement(
+                "div"
+            );
 
 
-        setTimeout(
-            () => {
-
-                button.textContent =
-                    originalText;
-
-            },
-            1400
-        );
-
-    }
-
-    catch {
-
-        alert(
-            "Clipboard erişimi sağlanamadı."
-        );
-
-    }
-
-}
+        title.className =
+            "question-title";
 
 
-/*
-    İlk yüklenmede sonucu göster
-*/
+        title.innerHTML = `
 
-calculate();
+            <span class="question-number">
 
-</script>
-
-</body>
-</html>
+                ${String(
+                    rowIndex + 1
+                ).
