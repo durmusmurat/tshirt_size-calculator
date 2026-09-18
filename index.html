@@ -1297,4 +1297,675 @@ criteria.forEach(
 
                 ${String(
                     rowIndex + 1
-                ).
+                ).padStart(
+                    2,
+                    "0"
+                )}
+
+            </span>
+
+
+            <span class="question-name">
+
+                ${criterion.name}
+
+            </span>
+
+        `;
+
+
+        row.appendChild(
+            title
+        );
+
+
+
+        /* -------------------------------------------
+           OPTIONS
+        ------------------------------------------- */
+
+        criterion.options.forEach(
+            (
+                optionText,
+                optionIndex
+            ) => {
+
+
+                const score =
+                    optionIndex + 1;
+
+
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.className =
+                    "option";
+
+
+                button.dataset.row =
+                    rowIndex;
+
+
+                button.dataset.score =
+                    score;
+
+
+                button.textContent =
+                    optionText;
+
+
+
+                button.addEventListener(
+                    "click",
+
+                    function () {
+
+
+                        selectOption(
+
+                            rowIndex,
+
+                            score,
+
+                            button
+
+                        );
+
+
+                    }
+
+                );
+
+
+                row.appendChild(
+                    button
+                );
+
+
+            }
+        );
+
+
+        questionsContainer.appendChild(
+            row
+        );
+
+
+    }
+
+);
+
+
+
+/* =====================================================
+   SELECT OPTION
+===================================================== */
+
+function selectOption(
+    rowIndex,
+    score,
+    selectedButton
+) {
+
+
+    /*
+       Aynı seçeneğe tekrar basılırsa
+       seçim kaldırılır.
+
+       Böylece kriter yeniden
+       0 puana döner.
+    */
+
+    if (
+
+        answers[rowIndex] === score
+
+        &&
+
+        selectedButton
+            .classList
+            .contains(
+                "selected"
+            )
+
+    ) {
+
+
+        answers[rowIndex] = 0;
+
+
+        selectedButton
+            .classList
+            .remove(
+                "selected"
+            );
+
+
+        calculate();
+
+
+        return;
+
+    }
+
+
+
+    /*
+       Aynı satırdaki eski seçimi kaldır.
+    */
+
+    document
+        .querySelectorAll(
+            `[data-row="${rowIndex}"]`
+        )
+        .forEach(
+            button => {
+
+
+                button
+                    .classList
+                    .remove(
+                        "selected"
+                    );
+
+
+            }
+        );
+
+
+
+    /*
+       Yeni puanı kaydet.
+    */
+
+    answers[rowIndex] =
+        score;
+
+
+    selectedButton
+        .classList
+        .add(
+            "selected"
+        );
+
+
+
+    /*
+       Sonucu yeniden hesapla.
+    */
+
+    calculate();
+
+
+}
+
+
+
+/* =====================================================
+   CALCULATE
+===================================================== */
+
+function calculate() {
+
+
+    /*
+       Önemli:
+
+       Boş kriterler 0'dır.
+
+       Average sadece seçilmiş
+       kriterlere göre DEĞİL,
+       her zaman 8 kriter üzerinden
+       hesaplanır.
+
+       Örnek:
+
+       3 + 2 + 3 + 0 + 0 + 0 + 0 + 0
+       -------------------------------
+                      8
+
+       = 1.00
+    */
+
+
+    const total =
+        answers.reduce(
+
+            (
+                sum,
+                value
+            ) =>
+
+                sum + value,
+
+            0
+
+        );
+
+
+
+    const average =
+        total
+        /
+        criteria.length;
+
+
+
+    const selectedCount =
+        answers.filter(
+
+            value =>
+                value > 0
+
+        ).length;
+
+
+
+    /* -------------------------------------------
+       TOTAL
+    ------------------------------------------- */
+
+    document.getElementById(
+        "totalScore"
+    ).textContent =
+        total;
+
+
+
+    /* -------------------------------------------
+       AVERAGE
+    ------------------------------------------- */
+
+    document.getElementById(
+        "averageScore"
+    ).textContent =
+        average.toFixed(2);
+
+
+
+    /* -------------------------------------------
+       SELECTED COUNT
+    ------------------------------------------- */
+
+    document.getElementById(
+        "selectedCount"
+    ).textContent =
+        `${selectedCount} / 8`;
+
+
+
+    /* -------------------------------------------
+       SIZE
+    ------------------------------------------- */
+
+    const size =
+        calculateSize(
+            average
+        );
+
+
+    document.getElementById(
+        "sizeResult"
+    ).textContent =
+        size;
+
+
+}
+
+
+
+/* =====================================================
+   T-SHIRT SIZE RULES
+===================================================== */
+
+function calculateSize(
+    average
+) {
+
+
+    /*
+       SIZE RULES
+
+       1.00 - 1.75
+       SMALL
+    */
+
+    if (
+
+        average >= 1.00
+
+        &&
+
+        average <= 1.75
+
+    ) {
+
+        return "Small";
+
+    }
+
+
+
+    /*
+       1.76 - 2.50
+       MEDIUM
+    */
+
+    if (
+
+        average > 1.75
+
+        &&
+
+        average <= 2.50
+
+    ) {
+
+        return "Medium";
+
+    }
+
+
+
+    /*
+       2.51 - 3.25
+       LARGE
+    */
+
+    if (
+
+        average > 2.50
+
+        &&
+
+        average <= 3.25
+
+    ) {
+
+        return "Large";
+
+    }
+
+
+
+    /*
+       3.26 - 4.00
+       X-LARGE
+    */
+
+    if (
+
+        average > 3.25
+
+        &&
+
+        average <= 4.00
+
+    ) {
+
+        return "X-Large";
+
+    }
+
+
+
+    /*
+       0.00 - 0.99 arasında
+       tanımlı bir T-Shirt Size
+       bulunmuyor.
+    */
+
+    return "Henüz Size Yok";
+
+
+}
+
+
+
+/* =====================================================
+   RESET CALCULATOR
+===================================================== */
+
+function resetCalculator() {
+
+
+    /*
+       Tüm cevapları tekrar
+       0 yap.
+    */
+
+    answers.fill(
+        0
+    );
+
+
+
+    /*
+       Tüm selected class'larını
+       kaldır.
+    */
+
+    document
+        .querySelectorAll(
+            ".option"
+        )
+        .forEach(
+            button => {
+
+
+                button
+                    .classList
+                    .remove(
+                        "selected"
+                    );
+
+
+            }
+        );
+
+
+
+    /*
+       Sonucu yeniden hesapla.
+    */
+
+    calculate();
+
+
+}
+
+
+
+/* =====================================================
+   COPY FOR JIRA
+===================================================== */
+
+async function copyForJira() {
+
+
+    const total =
+        answers.reduce(
+
+            (
+                sum,
+                value
+            ) =>
+
+                sum + value,
+
+            0
+
+        );
+
+
+
+    const average =
+        total
+        /
+        criteria.length;
+
+
+
+    const size =
+        calculateSize(
+            average
+        );
+
+
+
+    /*
+       Jira'ya yapıştırılacak
+       metin.
+    */
+
+    let text =
+
+`T-Shirt Size: ${size}
+Average Score: ${average.toFixed(2)}
+Total Score: ${total}
+
+`;
+
+
+
+    /*
+       Her kriterin detayını
+       ekle.
+    */
+
+    criteria.forEach(
+        (
+            criterion,
+            index
+        ) => {
+
+
+            const score =
+                answers[index];
+
+
+
+            /*
+               Seçilmemiş kriter.
+            */
+
+            if (
+                score === 0
+            ) {
+
+
+                text +=
+`${criterion.name}: 0 - Boş bırakıldı
+`;
+
+
+            }
+
+
+            /*
+               Seçilmiş kriter.
+            */
+
+            else {
+
+
+                const selectedText =
+                    criterion.options[
+                        score - 1
+                    ];
+
+
+                text +=
+`${criterion.name}: ${score} - ${selectedText}
+`;
+
+
+            }
+
+
+        }
+    );
+
+
+
+    /* -------------------------------------------
+       COPY
+    ------------------------------------------- */
+
+    try {
+
+
+        await navigator
+            .clipboard
+            .writeText(
+                text
+            );
+
+
+
+        const button =
+            document.querySelector(
+                ".copy"
+            );
+
+
+        const originalText =
+            button.textContent;
+
+
+
+        button.textContent =
+            "✓ Kopyalandı";
+
+
+
+        setTimeout(
+            () => {
+
+
+                button.textContent =
+                    originalText;
+
+
+            },
+
+            1400
+
+        );
+
+
+    }
+
+
+    catch {
+
+
+        alert(
+            "Clipboard erişimi sağlanamadı."
+        );
+
+
+    }
+
+
+}
+
+
+
+/* =====================================================
+   INITIAL CALCULATION
+===================================================== */
+
+calculate();
+
+
+</script>
+
+
+</body>
+
+</html>
