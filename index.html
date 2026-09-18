@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-    T-Shirt Size Calculator for Data & AI
-</title>
-
+<title>T-Shirt Size Calculator</title>
 
 <style>
 
 /* =====================================================
-   COLORS
+   DESIGN SYSTEM
 ===================================================== */
 
 :root {
 
-    --vodafone-red: #e60000;
-    --vodafone-dark-red: #bd0000;
+    --red: #e60000;
+    --red-dark: #bd0000;
+    --red-soft: #fff1f1;
 
     --dark: #242424;
     --text: #333333;
-    --muted: #6b6b6b;
+    --muted: #707070;
 
-    --line: #e5e5e5;
-    --bg: #f5f5f5;
+    --line: #e6e6e6;
+    --bg: #f4f5f6;
     --white: #ffffff;
+
+    --green: #2e7d32;
+    --orange: #ed6c02;
+    --purple: #7b1fa2;
 
 }
 
 
 /* =====================================================
-   GENERAL
+   RESET
 ===================================================== */
 
 * {
@@ -47,30 +43,27 @@
 
 html,
 body {
-
     margin: 0;
     min-height: 100%;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: var(--text);
-
-    background: var(--bg);
-
 }
 
 body {
 
     padding: 14px;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
 }
 
 
 /* =====================================================
-   MAIN APP
+   APP
 ===================================================== */
 
 .app {
@@ -80,7 +73,7 @@ body {
         calc(100vw - 28px)
     );
 
-    margin: 0 auto;
+    margin: auto;
 
 }
 
@@ -91,19 +84,19 @@ body {
 
 .header {
 
-    background:
-        linear-gradient(
-            120deg,
-            var(--vodafone-red),
-            var(--vodafone-dark-red)
-        );
-
-    color: white;
+    padding: 15px 22px;
 
     border-radius:
         18px 18px 0 0;
 
-    padding: 15px 22px;
+    background:
+        linear-gradient(
+            125deg,
+            #e60000,
+            #c70000
+        );
+
+    color: white;
 
     display: flex;
 
@@ -116,21 +109,20 @@ body {
 }
 
 
-.header-left {
+.brand-area {
 
     display: flex;
 
     align-items: center;
 
-    gap: 15px;
+    gap: 14px;
 
 }
 
 
-.logo {
+.brand-mark {
 
     width: 40px;
-
     height: 40px;
 
     border:
@@ -142,11 +134,8 @@ body {
 
     place-items: center;
 
-    font-size: 29px;
-
+    font-size: 28px;
     font-weight: bold;
-
-    line-height: 1;
 
     flex-shrink: 0;
 
@@ -157,9 +146,7 @@ body {
 
     margin: 0;
 
-    font-size: 26px;
-
-    line-height: 1.1;
+    font-size: 25px;
 
 }
 
@@ -167,18 +154,16 @@ body {
 .header p {
 
     margin:
-        5px 0 0;
-
-    font-size: 14px;
-
-    line-height: 1.25;
+        4px 0 0;
 
     color: #ffe4e4;
+
+    font-size: 13px;
 
 }
 
 
-.score-header {
+.header-progress {
 
     text-align: right;
 
@@ -187,26 +172,26 @@ body {
 }
 
 
-.score-header small {
+.header-progress small {
 
     display: block;
 
-    opacity: .85;
+    margin-bottom: 3px;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    text-transform: uppercase;
+    opacity: .8;
 
     letter-spacing: 1px;
 
-    margin-bottom: 3px;
+    text-transform: uppercase;
 
 }
 
 
-.score-header strong {
+.header-progress strong {
 
-    font-size: 22px;
+    font-size: 21px;
 
 }
 
@@ -217,6 +202,8 @@ body {
 
 .card {
 
+    overflow: hidden;
+
     background: white;
 
     border-radius:
@@ -224,18 +211,16 @@ body {
 
     box-shadow:
         0 10px 30px
-        rgba(0, 0, 0, .08);
-
-    overflow: hidden;
+        rgba(0,0,0,.08);
 
 }
 
 
 /* =====================================================
-   TABLE HEADER
+   MATRIX HEADER
 ===================================================== */
 
-.table-header {
+.matrix-header {
 
     display: grid;
 
@@ -243,8 +228,7 @@ body {
         205px
         repeat(4, 1fr);
 
-    background:
-        #fafafa;
+    background: #fafafa;
 
     border-bottom:
         1px solid var(--line);
@@ -252,14 +236,14 @@ body {
 }
 
 
-.table-header > div {
+.matrix-header div {
 
     padding:
         8px 10px;
 
     text-align: center;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 700;
 
@@ -268,17 +252,16 @@ body {
 }
 
 
-.table-header > div:first-child {
+.matrix-header div:first-child {
 
     text-align: left;
 
 }
 
 
-.table-header .number {
+.matrix-header .score-header {
 
-    color:
-        var(--vodafone-red);
+    color: var(--red);
 
     font-size: 17px;
 
@@ -300,26 +283,15 @@ body {
     border-bottom:
         1px solid var(--line);
 
-    align-items: stretch;
-
 }
 
-
-.question:last-child {
-
-    border-bottom: none;
-
-}
-
-
-/* =====================================================
-   QUESTION TITLE
-===================================================== */
 
 .question-title {
 
     padding:
         7px 11px;
+
+    background: #fcfcfc;
 
     display: flex;
 
@@ -327,27 +299,20 @@ body {
 
     gap: 8px;
 
-    background:
-        #fcfcfc;
-
 }
 
 
-.question-number {
+.question-index {
 
-    color:
-        var(--vodafone-red);
-
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 800;
 
-    flex-shrink: 0;
+    color: var(--red);
 
 }
 
 
-.question-name {
+.question-label {
 
     font-size: 14px;
 
@@ -359,10 +324,17 @@ body {
 
 
 /* =====================================================
-   OPTIONS
+   OPTION
 ===================================================== */
 
 .option {
+
+    position: relative;
+
+    min-height: 57px;
+
+    padding:
+        7px 10px;
 
     border: 0;
 
@@ -371,49 +343,49 @@ body {
 
     background: white;
 
-    padding:
-        7px 10px;
-
-    min-height: 58px;
+    color: #444;
 
     cursor: pointer;
 
-    display: flex;
-
-    align-items: center;
+    text-align: left;
 
     font-size: 13px;
 
     line-height: 1.22;
 
-    text-align: left;
+    display: flex;
 
-    color: #444;
+    align-items: center;
 
     transition:
-        background .12s ease,
-        color .12s ease,
-        box-shadow .12s ease;
+        background .15s ease,
+        color .15s ease,
+        transform .15s ease,
+        box-shadow .15s ease;
 
 }
 
 
 .option:hover {
 
-    background:
-        #fff2f2;
+    background: var(--red-soft);
 
 }
 
 
 .option.selected {
 
-    background:
-        var(--vodafone-red);
+    z-index: 2;
+
+    background: var(--red);
 
     color: white;
 
     font-weight: 600;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(255,255,255,.2);
 
 }
 
@@ -422,45 +394,35 @@ body {
 
     content: "✓";
 
-    min-width: 22px;
-
     width: 22px;
-
     height: 22px;
 
+    min-width: 22px;
+
     margin-right: 7px;
+
+    border-radius: 50%;
 
     display: grid;
 
     place-items: center;
 
-    border-radius: 50%;
-
     background: white;
 
-    color:
-        var(--vodafone-red);
+    color: var(--red);
 
     font-size: 12px;
 
     font-weight: 900;
 
-    flex-shrink: 0;
-
 }
 
 
 /* =====================================================
-   RESULT AREA
+   COCKPIT
 ===================================================== */
 
-.result-area {
-
-    background:
-        #f7f7f7;
-
-    border-top:
-        1px solid var(--line);
+.cockpit {
 
     padding:
         11px 18px;
@@ -468,35 +430,42 @@ body {
     display: grid;
 
     grid-template-columns:
-        auto
-        auto
-        1fr
-        auto;
+        auto auto auto 1fr auto;
+
+    gap: 22px;
 
     align-items: center;
 
-    gap: 24px;
+    background:
+        linear-gradient(
+            90deg,
+            #fafafa,
+            #f4f4f4
+        );
+
+    border-top:
+        1px solid var(--line);
 
 }
 
 
 /* =====================================================
-   METRICS
+   METRIC
 ===================================================== */
 
 .metric small {
 
     display: block;
 
+    margin-bottom: 3px;
+
     color: #777;
 
-    font-size: 11px;
-
-    text-transform: uppercase;
+    font-size: 10px;
 
     letter-spacing: .8px;
 
-    margin-bottom: 2px;
+    text-transform: uppercase;
 
 }
 
@@ -509,65 +478,178 @@ body {
 
 
 /* =====================================================
-   SIZE RESULT
+   SIZE BADGE
 ===================================================== */
 
-.size-result {
+.size-box {
 
-    min-width: 145px;
-
-    max-width: 200px;
+    min-width: 130px;
 
     padding:
-        10px 18px;
+        10px 16px;
+
+    border-radius: 11px;
 
     text-align: center;
 
-    border-radius: 10px;
-
-    background:
-        var(--vodafone-red);
+    background: #999;
 
     color: white;
 
-    font-size: 20px;
+    font-size: 19px;
 
     font-weight: 800;
 
-    box-shadow:
-        0 3px 8px
-        rgba(230, 0, 0, .15);
+    transition:
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.size-box.small {
+
+    background:
+        var(--green);
+
+}
+
+
+.size-box.medium {
+
+    background:
+        #1976d2;
+
+}
+
+
+.size-box.large {
+
+    background:
+        var(--orange);
+
+}
+
+
+.size-box.xlarge {
+
+    background:
+        var(--red);
+
+}
+
+
+.size-box.changed {
+
+    animation:
+        resultPop .25s ease;
+
+}
+
+
+@keyframes resultPop {
+
+    0% {
+        transform: scale(.92);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 
 }
 
 
 /* =====================================================
-   ACTION BUTTONS
+   DISTRIBUTION
+===================================================== */
+
+.distribution {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 6px;
+
+}
+
+
+.dist-item {
+
+    min-width: 44px;
+
+    padding:
+        5px 7px;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: white;
+
+    text-align: center;
+
+}
+
+
+.dist-item span {
+
+    display: block;
+
+    color: #888;
+
+    font-size: 9px;
+
+}
+
+
+.dist-item strong {
+
+    font-size: 14px;
+
+}
+
+
+.dist-zero {
+
+    color: #aaa;
+
+}
+
+
+/* =====================================================
+   ACTIONS
 ===================================================== */
 
 .actions {
 
     display: flex;
 
-    gap: 8px;
+    gap: 7px;
 
 }
 
 
-button.action {
+.action {
 
-    border-radius: 8px;
+    padding:
+        9px 13px;
 
     border: 0;
 
-    padding:
-        10px 15px;
-
-    font-size: 13px;
-
-    font-weight: 700;
+    border-radius: 8px;
 
     cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
 
     white-space: nowrap;
 
@@ -576,28 +658,19 @@ button.action {
 
 .reset {
 
-    border:
-        1px solid #ccc !important;
-
     background: white;
+
+    border:
+        1px solid #ccc;
 
     color: #444;
 
 }
 
 
-.reset:hover {
-
-    background:
-        #f1f1f1;
-
-}
-
-
 .copy {
 
-    background:
-        var(--dark);
+    background: var(--dark);
 
     color: white;
 
@@ -606,50 +679,235 @@ button.action {
 
 .copy:hover {
 
-    background:
-        #000000;
+    background: black;
 
 }
 
 
 /* =====================================================
-   SIZE SCALE
+   SCALE
 ===================================================== */
 
-.scale {
+.scale-area {
 
     padding:
-        7px 16px;
+        6px 16px;
 
     display: flex;
-
-    align-items: center;
 
     justify-content: center;
 
     gap: 18px;
 
-    background: white;
-
     border-top:
         1px solid var(--line);
 
-    font-size: 11px;
+    background: white;
+
+    font-size: 10px;
 
     color: #777;
 
 }
 
 
-.scale b {
+.scale-area b {
+
+    color: #333;
+
+}
+
+
+/* =====================================================
+   SUMMARY HEADER
+===================================================== */
+
+.summary-toggle {
+
+    width: 100%;
+
+    padding:
+        9px 17px;
+
+    border: 0;
+
+    border-top:
+        1px solid var(--line);
+
+    background: #fafafa;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 12px;
 
     color: #444;
 
 }
 
 
+.summary-toggle strong {
+
+    font-size: 12px;
+
+}
+
+
+.summary-toggle:hover {
+
+    background: #f4f4f4;
+
+}
+
+
+.summary-arrow {
+
+    transition:
+        transform .2s ease;
+
+}
+
+
+.summary-open
+.summary-arrow {
+
+    transform:
+        rotate(180deg);
+
+}
+
+
 /* =====================================================
-   TABLET / MOBILE
+   SUMMARY PANEL
+===================================================== */
+
+.summary {
+
+    display: none;
+
+    border-top:
+        1px solid var(--line);
+
+    background: white;
+
+}
+
+
+.summary.visible {
+
+    display: block;
+
+}
+
+
+/* =====================================================
+   SUMMARY TABLE
+===================================================== */
+
+.summary-row {
+
+    display: grid;
+
+    grid-template-columns:
+        220px 60px 1fr;
+
+    align-items: center;
+
+    min-height: 37px;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+.summary-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.summary-row > div {
+
+    padding:
+        7px 13px;
+
+}
+
+
+.summary-name {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.summary-score {
+
+    text-align: center;
+
+}
+
+
+.score-pill {
+
+    display: inline-grid;
+
+    width: 27px;
+    height: 27px;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.score-pill.zero {
+
+    background: #ededed;
+
+    color: #888;
+
+}
+
+
+.summary-answer {
+
+    font-size: 12px;
+
+    color: #555;
+
+}
+
+
+.summary-answer.empty {
+
+    color: #aaa;
+
+    font-style: italic;
+
+}
+
+
+/* =====================================================
+   MOBILE
 ===================================================== */
 
 @media (
@@ -670,13 +928,7 @@ button.action {
     }
 
 
-    .header {
-
-        border-radius: 0;
-
-    }
-
-
+    .header,
     .card {
 
         border-radius: 0;
@@ -684,7 +936,7 @@ button.action {
     }
 
 
-    .table-header {
+    .matrix-header {
 
         display: none;
 
@@ -711,29 +963,34 @@ button.action {
 
         display: inline-flex;
 
+        vertical-align: top;
+
         width:
             calc(50% - 4px);
 
-        min-height: 62px;
+        min-height: 64px;
 
-        vertical-align: top;
+        margin: 2px;
 
         border:
             1px solid #eee;
 
-        margin: 2px;
-
         border-radius: 7px;
-
-        font-size: 13px;
 
     }
 
 
-    .result-area {
+    .cockpit {
 
         grid-template-columns:
             1fr 1fr;
+
+    }
+
+
+    .distribution {
+
+        justify-content: flex-start;
 
     }
 
@@ -746,16 +1003,24 @@ button.action {
     }
 
 
-    button.action {
+    .action {
 
         flex: 1;
 
     }
 
 
-    .scale {
+    .scale-area {
 
         flex-wrap: wrap;
+
+    }
+
+
+    .summary-row {
+
+        grid-template-columns:
+            150px 50px 1fr;
 
     }
 
@@ -770,45 +1035,37 @@ button.action {
     max-width: 520px
 ) {
 
+    .brand-mark {
+
+        display: none;
+
+    }
+
+
     .header {
 
-        padding:
-            14px;
+        padding: 13px;
 
     }
 
 
     .header h1 {
 
-        font-size: 21px;
+        font-size: 20px;
 
     }
 
 
     .header p {
 
-        font-size: 12px;
+        font-size: 11px;
 
     }
 
 
-    .logo {
+    .header-progress small {
 
         display: none;
-
-    }
-
-
-    .score-header small {
-
-        display: none;
-
-    }
-
-
-    .score-header strong {
-
-        font-size: 17px;
 
     }
 
@@ -818,30 +1075,41 @@ button.action {
         width:
             calc(100% - 4px);
 
-        min-height: 48px;
+        min-height: 49px;
 
     }
 
 
-    .result-area {
+    .cockpit {
 
         gap: 12px;
 
     }
 
 
-    .size-result {
+    .distribution {
 
-        font-size: 17px;
-
-        min-width: 110px;
+        grid-column:
+            1 / -1;
 
     }
 
 
-    .actions {
+    .summary-row {
 
-        flex-direction: column;
+        grid-template-columns:
+            1fr 45px;
+
+    }
+
+
+    .summary-answer {
+
+        grid-column:
+            1 / -1;
+
+        padding-top:
+            0 !important;
 
     }
 
@@ -858,204 +1126,325 @@ button.action {
 <div class="app">
 
 
-    <!-- ===============================================
-         HEADER
-    ================================================ -->
+<!-- ===================================================
+     HEADER
+=================================================== -->
 
-    <header class="header">
-
-
-        <div class="header-left">
+<header class="header">
 
 
-            <div class="logo">
-                ’
-            </div>
+    <div class="brand-area">
 
 
-            <div>
-
-                <h1>
-                    T-Shirt Size Calculator
-                </h1>
+        <div class="brand-mark">
+            ’
+        </div>
 
 
-                <p>
-                    Her satırdan işi en iyi tanımlayan
-                    seçeneği seç. Unutma! Boş bırakılan kriter
-                    0 puan olarak hesaplanır.
-                </p>
+        <div>
 
-            </div>
+            <h1>
+                T-Shirt Size Calculator
+            </h1>
 
+            <p>
+                Complexity · Scope · Risk · Impact · Coordination
+            </p>
 
         </div>
 
 
-        <div class="score-header">
+    </div>
 
-            <small>
-                Seçilen kriter
-            </small>
 
-            <strong id="selectedCount">
-                0 / 8
+    <div class="header-progress">
+
+        <small>
+            Değerlendirilen kriter
+        </small>
+
+        <strong id="selectedCount">
+            0 / 8
+        </strong>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- ===================================================
+     CARD
+=================================================== -->
+
+<main class="card">
+
+
+<!-- MATRIX HEADER -->
+
+<div class="matrix-header">
+
+    <div>
+        Kriter
+    </div>
+
+    <div class="score-header">
+        1
+    </div>
+
+    <div class="score-header">
+        2
+    </div>
+
+    <div class="score-header">
+        3
+    </div>
+
+    <div class="score-header">
+        4
+    </div>
+
+</div>
+
+
+
+<!-- QUESTIONS -->
+
+<div id="questions">
+</div>
+
+
+
+<!-- ===================================================
+     ESTIMATION COCKPIT
+=================================================== -->
+
+<div class="cockpit">
+
+
+    <!-- TOTAL -->
+
+    <div class="metric">
+
+        <small>
+            Toplam
+        </small>
+
+        <strong id="totalScore">
+            0
+        </strong>
+
+    </div>
+
+
+
+    <!-- AVERAGE -->
+
+    <div class="metric">
+
+        <small>
+            Average
+        </small>
+
+        <strong id="averageScore">
+            0.00
+        </strong>
+
+    </div>
+
+
+
+    <!-- SIZE -->
+
+    <div
+        id="sizeResult"
+        class="size-box"
+    >
+        No Size
+    </div>
+
+
+
+    <!-- DISTRIBUTION -->
+
+    <div
+        class="distribution"
+        title="Seçilen puanların dağılımı"
+    >
+
+        <div class="dist-item">
+
+            <span>
+                SCORE 1
+            </span>
+
+            <strong id="dist1">
+                0
             </strong>
 
         </div>
 
 
-    </header>
+        <div class="dist-item">
 
+            <span>
+                SCORE 2
+            </span>
 
-
-    <!-- ===============================================
-         MAIN CARD
-    ================================================ -->
-
-    <main class="card">
-
-
-        <!-- TABLE HEADER -->
-
-        <div class="table-header">
-
-            <div>
-                Kriter
-            </div>
-
-            <div class="number">
-                1
-            </div>
-
-            <div class="number">
-                2
-            </div>
-
-            <div class="number">
-                3
-            </div>
-
-            <div class="number">
-                4
-            </div>
+            <strong id="dist2">
+                0
+            </strong>
 
         </div>
 
 
+        <div class="dist-item">
 
-        <!-- QUESTIONS WILL BE GENERATED HERE -->
+            <span>
+                SCORE 3
+            </span>
 
-        <div id="questions">
-        </div>
-
-
-
-        <!-- ===========================================
-             RESULT
-        ============================================ -->
-
-        <div class="result-area">
-
-
-            <div class="metric">
-
-                <small>
-                    Toplam Puan
-                </small>
-
-                <strong id="totalScore">
-                    0
-                </strong>
-
-            </div>
-
-
-
-            <div class="metric">
-
-                <small>
-                    Average
-                </small>
-
-                <strong id="averageScore">
-                    0.00
-                </strong>
-
-            </div>
-
-
-
-            <div>
-
-                <div
-                    class="size-result"
-                    id="sizeResult"
-                >
-                    Henüz Size Yok
-                </div>
-
-            </div>
-
-
-
-            <div class="actions">
-
-
-                <button
-                    class="action reset"
-                    onclick="resetCalculator()"
-                >
-                    ↻ Sıfırla
-                </button>
-
-
-                <button
-                    class="action copy"
-                    onclick="copyForJira()"
-                >
-                    Jira'ya Kopyala
-                </button>
-
-
-            </div>
-
+            <strong id="dist3">
+                0
+            </strong>
 
         </div>
 
 
-
-        <!-- ===========================================
-             SIZE SCALE
-        ============================================ -->
-
-        <div class="scale">
-
-            <b>
-                Size:
-            </b>
+        <div class="dist-item">
 
             <span>
-                1.00 – 1.75 Small
+                SCORE 4
             </span>
 
-            <span>
-                1.76 – 2.50 Medium
-            </span>
-
-            <span>
-                2.51 – 3.25 Large
-            </span>
-
-            <span>
-                3.26 – 4.00 X-Large
-            </span>
+            <strong id="dist4">
+                0
+            </strong>
 
         </div>
 
 
-    </main>
+        <div class="dist-item">
 
+            <span>
+                EMPTY
+            </span>
+
+            <strong
+                id="dist0"
+                class="dist-zero"
+            >
+                8
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+        <button
+            class="action reset"
+            onclick="resetCalculator()"
+        >
+            ↻ Sıfırla
+        </button>
+
+
+        <button
+            id="copyButton"
+            class="action copy"
+            onclick="copyForJira()"
+        >
+            Jira'ya Kopyala
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ===================================================
+     SCALE
+=================================================== -->
+
+<div class="scale-area">
+
+    <b>
+        T-Shirt Size
+    </b>
+
+    <span>
+        1.00–1.75 Small
+    </span>
+
+    <span>
+        1.76–2.50 Medium
+    </span>
+
+    <span>
+        2.51–3.25 Large
+    </span>
+
+    <span>
+        3.26–4.00 X-Large
+    </span>
+
+</div>
+
+
+
+<!-- ===================================================
+     SUMMARY TOGGLE
+=================================================== -->
+
+<button
+    id="summaryToggle"
+    class="summary-toggle"
+    onclick="toggleSummary()"
+>
+
+    <strong>
+        ☰ Seçimlerin Özeti
+    </strong>
+
+    <span>
+
+        <span id="summaryMessage">
+            Henüz seçim yapılmadı
+        </span>
+
+        &nbsp;
+
+        <span class="summary-arrow">
+            ▼
+        </span>
+
+    </span>
+
+</button>
+
+
+
+<!-- ===================================================
+     SUMMARY
+=================================================== -->
+
+<div
+    id="summary"
+    class="summary"
+>
+</div>
+
+
+</main>
 
 </div>
 
@@ -1065,7 +1454,7 @@ button.action {
 
 
 /* =====================================================
-   CRITERIA
+   DATA MODEL
 ===================================================== */
 
 const criteria = [
@@ -1238,10 +1627,7 @@ const criteria = [
 /* =====================================================
    ANSWERS
 
-   Her kriter başlangıçta 0 puan.
-
-   Kullanıcı seçim yapmazsa
-   kriter 0 olarak kalır.
+   Boş satır = 0
 ===================================================== */
 
 const answers =
@@ -1252,14 +1638,13 @@ const answers =
 
 
 /* =====================================================
-   CREATE QUESTION TABLE
+   CREATE MATRIX
 ===================================================== */
 
 const questionsContainer =
     document.getElementById(
         "questions"
     );
-
 
 
 criteria.forEach(
@@ -1277,9 +1662,7 @@ criteria.forEach(
 
 
 
-        /* -------------------------------------------
-           QUESTION TITLE
-        ------------------------------------------- */
+        /* QUESTION TITLE */
 
         const title =
             document.createElement(
@@ -1293,7 +1676,7 @@ criteria.forEach(
 
         title.innerHTML = `
 
-            <span class="question-number">
+            <span class="question-index">
 
                 ${String(
                     rowIndex + 1
@@ -1304,8 +1687,7 @@ criteria.forEach(
 
             </span>
 
-
-            <span class="question-name">
+            <span class="question-label">
 
                 ${criterion.name}
 
@@ -1320,9 +1702,7 @@ criteria.forEach(
 
 
 
-        /* -------------------------------------------
-           OPTIONS
-        ------------------------------------------- */
+        /* OPTIONS */
 
         criterion.options.forEach(
             (
@@ -1333,7 +1713,6 @@ criteria.forEach(
 
                 const score =
                     optionIndex + 1;
-
 
 
                 const button =
@@ -1358,10 +1737,7 @@ criteria.forEach(
                     optionText;
 
 
-
-                button.addEventListener(
-                    "click",
-
+                button.onclick =
                     function () {
 
 
@@ -1376,9 +1752,7 @@ criteria.forEach(
                         );
 
 
-                    }
-
-                );
+                    };
 
 
                 row.appendChild(
@@ -1402,6 +1776,105 @@ criteria.forEach(
 
 
 /* =====================================================
+   CREATE SUMMARY TABLE
+===================================================== */
+
+function buildSummary() {
+
+
+    const summary =
+        document.getElementById(
+            "summary"
+        );
+
+
+    summary.innerHTML = "";
+
+
+    criteria.forEach(
+        (
+            criterion,
+            index
+        ) => {
+
+
+            const score =
+                answers[index];
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "summary-row";
+
+
+            const description =
+                score === 0
+                ? "Boş bırakıldı"
+                : criterion.options[
+                    score - 1
+                ];
+
+
+            row.innerHTML = `
+
+                <div class="summary-name">
+
+                    ${criterion.name}
+
+                </div>
+
+
+                <div class="summary-score">
+
+                    <span
+                        class="score-pill
+                        ${score === 0
+                            ? "zero"
+                            : ""}"
+                    >
+
+                        ${score}
+
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="
+                        summary-answer
+                        ${score === 0
+                            ? "empty"
+                            : ""}
+                    "
+                >
+
+                    ${description}
+
+                </div>
+
+            `;
+
+
+            summary.appendChild(
+                row
+            );
+
+
+        }
+    );
+
+
+}
+
+
+
+/* =====================================================
    SELECT OPTION
 ===================================================== */
 
@@ -1413,11 +1886,8 @@ function selectOption(
 
 
     /*
-       Aynı seçeneğe tekrar basılırsa
-       seçim kaldırılır.
-
-       Böylece kriter yeniden
-       0 puana döner.
+       Aynı seçeneğe tekrar
+       tıklanırsa kaldır.
     */
 
     if (
@@ -1455,7 +1925,7 @@ function selectOption(
 
 
     /*
-       Aynı satırdaki eski seçimi kaldır.
+       Eski seçimi kaldır.
     */
 
     document
@@ -1479,7 +1949,7 @@ function selectOption(
 
 
     /*
-       Yeni puanı kaydet.
+       Yeni seçim.
     */
 
     answers[rowIndex] =
@@ -1493,11 +1963,6 @@ function selectOption(
         );
 
 
-
-    /*
-       Sonucu yeniden hesapla.
-    */
-
     calculate();
 
 
@@ -1506,47 +1971,185 @@ function selectOption(
 
 
 /* =====================================================
-   CALCULATE
+   SIZE CALCULATION
+===================================================== */
+
+function calculateSize(
+    average
+) {
+
+
+    if (
+        average >= 1.00
+        &&
+        average <= 1.75
+    ) {
+
+        return "Small";
+
+    }
+
+
+    if (
+        average > 1.75
+        &&
+        average <= 2.50
+    ) {
+
+        return "Medium";
+
+    }
+
+
+    if (
+        average > 2.50
+        &&
+        average <= 3.25
+    ) {
+
+        return "Large";
+
+    }
+
+
+    if (
+        average > 3.25
+        &&
+        average <= 4.00
+    ) {
+
+        return "X-Large";
+
+    }
+
+
+    return "No Size";
+
+}
+
+
+
+/* =====================================================
+   SIZE STYLE
+===================================================== */
+
+function updateSizeStyle(
+    sizeElement,
+    size
+) {
+
+
+    sizeElement.classList.remove(
+
+        "small",
+        "medium",
+        "large",
+        "xlarge",
+        "changed"
+
+    );
+
+
+    if (
+        size === "Small"
+    ) {
+
+        sizeElement
+            .classList
+            .add(
+                "small"
+            );
+
+    }
+
+
+    else if (
+        size === "Medium"
+    ) {
+
+        sizeElement
+            .classList
+            .add(
+                "medium"
+            );
+
+    }
+
+
+    else if (
+        size === "Large"
+    ) {
+
+        sizeElement
+            .classList
+            .add(
+                "large"
+            );
+
+    }
+
+
+    else if (
+        size === "X-Large"
+    ) {
+
+        sizeElement
+            .classList
+            .add(
+                "xlarge"
+            );
+
+    }
+
+
+    /*
+       Small animation
+    */
+
+    void sizeElement.offsetWidth;
+
+
+    sizeElement
+        .classList
+        .add(
+            "changed"
+        );
+
+
+}
+
+
+
+/* =====================================================
+   MAIN CALCULATION
 ===================================================== */
 
 function calculate() {
 
 
-    /*
-       Önemli:
-
-       Boş kriterler 0'dır.
-
-       Average sadece seçilmiş
-       kriterlere göre DEĞİL,
-       her zaman 8 kriter üzerinden
-       hesaplanır.
-
-       Örnek:
-
-       3 + 2 + 3 + 0 + 0 + 0 + 0 + 0
-       -------------------------------
-                      8
-
-       = 1.00
-    */
-
+    /* TOTAL */
 
     const total =
         answers.reduce(
 
             (
-                sum,
-                value
+                total,
+                current
             ) =>
 
-                sum + value,
+                total + current,
 
             0
 
         );
 
 
+
+    /*
+       Her zaman 8'e böl.
+
+       Boşlar 0.
+    */
 
     const average =
         total
@@ -1558,16 +2161,21 @@ function calculate() {
     const selectedCount =
         answers.filter(
 
-            value =>
-                value > 0
+            score =>
+                score !== 0
 
         ).length;
 
 
 
-    /* -------------------------------------------
-       TOTAL
-    ------------------------------------------- */
+    const size =
+        calculateSize(
+            average
+        );
+
+
+
+    /* UPDATE METRICS */
 
     document.getElementById(
         "totalScore"
@@ -1575,21 +2183,11 @@ function calculate() {
         total;
 
 
-
-    /* -------------------------------------------
-       AVERAGE
-    ------------------------------------------- */
-
     document.getElementById(
         "averageScore"
     ).textContent =
         average.toFixed(2);
 
-
-
-    /* -------------------------------------------
-       SELECTED COUNT
-    ------------------------------------------- */
 
     document.getElementById(
         "selectedCount"
@@ -1598,128 +2196,79 @@ function calculate() {
 
 
 
-    /* -------------------------------------------
-       SIZE
-    ------------------------------------------- */
+    /* SIZE */
 
-    const size =
-        calculateSize(
-            average
+    const sizeElement =
+        document.getElementById(
+            "sizeResult"
         );
 
 
-    document.getElementById(
-        "sizeResult"
-    ).textContent =
+    sizeElement.textContent =
         size;
 
 
+    updateSizeStyle(
+        sizeElement,
+        size
+    );
+
+
+
+    /* SUMMARY MESSAGE */
+
+    document.getElementById(
+        "summaryMessage"
+    ).textContent =
+
+        selectedCount === 0
+
+            ? "Henüz seçim yapılmadı"
+
+            : `${selectedCount} kriter seçildi`;
+
+
+
+    updateDistribution();
+
+
+    buildSummary();
+
+
 }
 
 
 
 /* =====================================================
-   T-SHIRT SIZE RULES
+   SCORE DISTRIBUTION
 ===================================================== */
 
-function calculateSize(
-    average
-) {
+function updateDistribution() {
 
 
-    /*
-       SIZE RULES
-
-       1.00 - 1.75
-       SMALL
-    */
-
-    if (
-
-        average >= 1.00
-
-        &&
-
-        average <= 1.75
-
+    for (
+        let score = 0;
+        score <= 4;
+        score++
     ) {
 
-        return "Small";
+
+        const count =
+            answers.filter(
+
+                value =>
+                    value === score
+
+            ).length;
+
+
+        document.getElementById(
+            "dist" + score
+        ).textContent =
+            count;
+
 
     }
-
-
-
-    /*
-       1.76 - 2.50
-       MEDIUM
-    */
-
-    if (
-
-        average > 1.75
-
-        &&
-
-        average <= 2.50
-
-    ) {
-
-        return "Medium";
-
-    }
-
-
-
-    /*
-       2.51 - 3.25
-       LARGE
-    */
-
-    if (
-
-        average > 2.50
-
-        &&
-
-        average <= 3.25
-
-    ) {
-
-        return "Large";
-
-    }
-
-
-
-    /*
-       3.26 - 4.00
-       X-LARGE
-    */
-
-    if (
-
-        average > 3.25
-
-        &&
-
-        average <= 4.00
-
-    ) {
-
-        return "X-Large";
-
-    }
-
-
-
-    /*
-       0.00 - 0.99 arasında
-       tanımlı bir T-Shirt Size
-       bulunmuyor.
-    */
-
-    return "Henüz Size Yok";
 
 
 }
@@ -1727,27 +2276,53 @@ function calculateSize(
 
 
 /* =====================================================
-   RESET CALCULATOR
+   SUMMARY OPEN / CLOSE
+===================================================== */
+
+function toggleSummary() {
+
+
+    const summary =
+        document.getElementById(
+            "summary"
+        );
+
+
+    const button =
+        document.getElementById(
+            "summaryToggle"
+        );
+
+
+    summary
+        .classList
+        .toggle(
+            "visible"
+        );
+
+
+    button
+        .classList
+        .toggle(
+            "summary-open"
+        );
+
+
+}
+
+
+
+/* =====================================================
+   RESET
 ===================================================== */
 
 function resetCalculator() {
 
 
-    /*
-       Tüm cevapları tekrar
-       0 yap.
-    */
-
     answers.fill(
         0
     );
 
-
-
-    /*
-       Tüm selected class'larını
-       kaldır.
-    */
 
     document
         .querySelectorAll(
@@ -1767,11 +2342,6 @@ function resetCalculator() {
             }
         );
 
-
-
-    /*
-       Sonucu yeniden hesapla.
-    */
 
     calculate();
 
@@ -1802,12 +2372,10 @@ async function copyForJira() {
         );
 
 
-
     const average =
         total
         /
         criteria.length;
-
 
 
     const size =
@@ -1816,26 +2384,17 @@ async function copyForJira() {
         );
 
 
-
-    /*
-       Jira'ya yapıştırılacak
-       metin.
-    */
-
     let text =
 
 `T-Shirt Size: ${size}
 Average Score: ${average.toFixed(2)}
 Total Score: ${total}
 
+Estimation Breakdown
+--------------------
 `;
 
 
-
-    /*
-       Her kriterin detayını
-       ekle.
-    */
 
     criteria.forEach(
         (
@@ -1847,11 +2406,6 @@ Total Score: ${total}
             const score =
                 answers[index];
 
-
-
-            /*
-               Seçilmemiş kriter.
-            */
 
             if (
                 score === 0
@@ -1866,21 +2420,11 @@ Total Score: ${total}
             }
 
 
-            /*
-               Seçilmiş kriter.
-            */
-
             else {
 
 
-                const selectedText =
-                    criterion.options[
-                        score - 1
-                    ];
-
-
                 text +=
-`${criterion.name}: ${score} - ${selectedText}
+`${criterion.name}: ${score} - ${criterion.options[score - 1]}
 `;
 
 
@@ -1892,10 +2436,6 @@ Total Score: ${total}
 
 
 
-    /* -------------------------------------------
-       COPY
-    ------------------------------------------- */
-
     try {
 
 
@@ -1906,21 +2446,18 @@ Total Score: ${total}
             );
 
 
-
         const button =
-            document.querySelector(
-                ".copy"
+            document.getElementById(
+                "copyButton"
             );
 
 
-        const originalText =
+        const old =
             button.textContent;
-
 
 
         button.textContent =
             "✓ Kopyalandı";
-
 
 
         setTimeout(
@@ -1928,13 +2465,12 @@ Total Score: ${total}
 
 
                 button.textContent =
-                    originalText;
+                    old;
 
 
             },
 
             1400
-
         );
 
 
@@ -1957,7 +2493,7 @@ Total Score: ${total}
 
 
 /* =====================================================
-   INITIAL CALCULATION
+   INITIAL LOAD
 ===================================================== */
 
 calculate();
@@ -1967,5 +2503,4 @@ calculate();
 
 
 </body>
-
 </html>
